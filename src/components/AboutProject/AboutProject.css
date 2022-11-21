@@ -1,0 +1,82 @@
+.about-project {
+    background-color: #202020;
+}
+
+.about-project__container {
+    max-width: calc((1140/1280) * 100%);
+    margin: 0 auto;
+    padding-bottom: 110px;
+}
+
+.about-project__info {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 70px;
+}
+
+.about-project__description {
+    max-width: calc((550/1140) * 100%);
+}
+
+.about-project__subtitle {
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+    padding-bottom: 26px;
+}
+
+.about-project__text {
+    margin: 0 auto;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 20px;
+    padding-bottom: 110px;
+}
+
+.about-project__duration {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: 1fr 4fr;
+    grid-row-gap: 14px;
+}
+
+.about-project__duration-item {
+    margin: 0px;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 17px;
+    text-align: center;
+}
+
+.about-project__duration-week {
+    background-color: #3ddc84;
+    color: #000;
+}
+
+.about-project__duration-text {
+    padding: 9px 0px;
+    font-weight: 400;
+}
+
+.about-project__duration-4week {
+    background-color: #303030;
+    color: #FFFFFF;
+}
+
+.about-project__duration-description {
+    color: #8B8B8B;
+    font-weight: 500;
+}
+
+
+
+/* @media (max-width: 950px) {
+    .header {
+        max-width: 100%;
+        padding-top: 28px;
+    }
+}   */

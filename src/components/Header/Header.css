@@ -1,0 +1,17 @@
+.header__container {
+    max-width: calc((1140/1280) * 100%);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    background-color: #073042;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+@media (max-width: 950px) {
+    .header__container{
+        max-width: 100%;
+    }
+}
