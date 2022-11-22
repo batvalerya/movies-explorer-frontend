@@ -3,7 +3,7 @@
 }
 
 .about-project__container {
-    max-width: calc((1140/1280) * 100%);
+    max-width: 1140px;
     margin: 0 auto;
     padding-bottom: 110px;
 }
