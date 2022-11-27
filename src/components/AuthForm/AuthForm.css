@@ -1,0 +1,115 @@
+.auth {
+    background: #202020;
+    height: 100vh;
+}
+
+.auth__container {
+    max-width: calc((396 / 1280) *100%);
+    margin: 0px auto;
+    padding: 52px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth__title {
+    font-size: 24px;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 29px;
+    color: #FFFFFF;
+    padding: 0px 0px 16px 0px;
+    margin: 0px;
+}
+
+.auth__form {
+    padding-bottom: 134px;
+}
+
+.auth__input-name {
+    font-size: 10px;
+    font-weight: 00;
+    font-style: normal;
+    line-height: 12px;
+    color: #8B8B8B;
+    padding: 24px 0px 5px 0px;
+    margin: 0px;
+}
+
+.auth__input {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 17px;
+    color: #FFFFFF;
+    border: none;
+    background: none;
+    border-bottom: 1px solid #424242;
+    padding: 0px 0px 10px 0px;
+    width: 100%;
+}
+
+.auth__input:focus {
+    outline: none;
+    border-bottom: 1px solid #4285F4;
+}
+
+.auth__error {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 12px;
+    color: #EE3465;
+    visibility: hidden;
+    padding-top: 6px;
+}
+
+.auth-btn {
+    min-width: 100%;
+    min-height: 45px;
+    background: #4285F4;
+    color: #FFFFFF;
+    align-self: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: none;
+    padding: 0px;
+}
+
+.auth-btn:hover {
+    transition: opacity 1s ease;
+    opacity: 0.8;
+}
+
+.auth-form__signin {
+    padding-top: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+.auth-form__signin-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-decoration: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.auth-form__signin-text_question {
+    color: #8B8B8B;
+}
+
+.auth-form__signin-link {
+    color: #4285F4;
+    padding-left: 6px;
+}
+
+.auth-form__signin-link:hover {
+  transition: opacity 1s ease;
+  opacity: 0.5;
+}

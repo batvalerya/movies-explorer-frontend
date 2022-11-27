@@ -29,3 +29,46 @@
 .nav__link_signup {
     color: #fff;
 }
+
+.nav__account {
+    display: flex;
+    width: calc((676/1140) * 100% );
+    justify-content: space-between;
+}
+
+.nav__account-img {
+    margin: 0 7px 0px 0px;
+    width: 12px;
+    height: 14px;
+}
+
+.nav__link_account {
+    font-size: 14px;
+    color: #fff;
+    margin: 0px;
+    padding: 9px 12px;
+    border: 2px solid rgba(170, 170, 170, 0.2);;
+    border-radius: 50px;
+}
+
+.nav__link_saved-movies {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 18px;
+    margin-left: 16px;
+}
+
+.nav__link_movies {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+    margin-left: 0px;
+}
+
+@media screen and (max-width: 768px) {
+    .nav__account_hidden {
+      display: none;
+    }
+}

@@ -1,0 +1,50 @@
+.search-form__checkbox-container {
+    padding: 42px 0px 70px 0px;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #424242;
+}
+
+.search-form__lable {
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 18px;
+    color: #FFFFFF;
+}
+
+.search-form__checkbox {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 20px;
+    width: 36px;
+    height: 20px;
+    margin-right: 14px;
+    cursor: pointer;
+    appearance: none;
+    background-color: #EBEBEB;
+    transition: background-color 0.2s linear 0.1s;
+}
+
+.search-form__checkbox::after {
+    position: absolute;
+    content: ' ';
+    width: 16px;
+    height: 16px;
+    background-color: #FFFFFF;
+    border-radius: 50px;
+    top: 2px;
+    left: 2px;
+    transition: left 0.2s linear 0.1s;
+}
+
+.search-form__checkbox:checked {
+    transition: background-color 0.2s linear 0.1s;
+    background-color: #3DDC84;
+}
+
+.search-form__checkbox:checked::after {
+    left: 18px;
+    transition: left 0.2s linear 0.1s;
+}
