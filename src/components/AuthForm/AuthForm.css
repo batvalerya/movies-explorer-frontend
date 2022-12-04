@@ -85,13 +85,13 @@
     opacity: 0.8;
 }
 
-.auth-form__signin {
+.auth-form__question {
     padding-top: 16px;
     display: flex;
     justify-content: center;
 }
 
-.auth-form__signin-text {
+.auth-form__link-text {
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
@@ -100,16 +100,16 @@
     margin: 0px;
 }
 
-.auth-form__signin-text_question {
+.auth-form__link-text_question {
     color: #8B8B8B;
 }
 
-.auth-form__signin-link {
+.auth-form__link {
     color: #4285F4;
     padding-left: 6px;
 }
 
-.auth-form__signin-link:hover {
+.auth-form__link:hover {
   transition: opacity 1s ease;
   opacity: 0.5;
 }
