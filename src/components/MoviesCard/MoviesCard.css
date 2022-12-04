@@ -26,14 +26,17 @@
     padding-bottom: 30px;
 }
 
-.movies-card__save-button {
-    background: url(../../images/saveBtn.svg);
+.movies-card__button {
     width: 14px;
     height: 12px;
     padding: 0;
     cursor: pointer;
     border: none;
     box-sizing: border-box;
+}
+
+.movies-card__save-button {
+    background: url(../../images/saveBtn.svg);
 }
 
 .movies-card__save-button:active {
@@ -45,7 +48,7 @@
     opacity: 0.5;
 }
 
-.movies-card__delete-button:active {
+.movies-card__delete-button {
     background: url(../../images/deleteBtn.svg);
 }
 
