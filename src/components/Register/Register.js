@@ -8,7 +8,7 @@ function Register() {
             formName={"signup"}
             submitText={"Зарегистрироваться"}
             formQuestion={"Уже зарегистрированы?"}
-            questionLink={"/sign-in"}
+            questionLink={"/signin"}
             questionLinkText={"Войти"}
         />
     )

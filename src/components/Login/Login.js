@@ -8,7 +8,7 @@ function Login() {
             formName={"signin"}
             submitText={"Войти"}
             formQuestion={"Ещё не зарегистрированы?"}
-            questionLink={"/sign-up"}
+            questionLink={"/signup"}
             questionLinkText={"Регистрация"}
         />
     )
