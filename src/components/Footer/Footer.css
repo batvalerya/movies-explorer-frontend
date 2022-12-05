@@ -66,3 +66,41 @@
         max-width: calc((668 / 768) * 100%);
     }
 }
+
+@media (max-width: 600px) {
+    .footer__container {
+        max-width: calc((300 / 320) * 100%);
+    }
+
+    .footer__text {
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .footer__copyrigh {
+        font-size: 12px;
+        line-height: 15px;
+        color:  #8B8B8B;
+        padding: 18px 0px 10px 0px;
+    }
+
+    .footer__content-copyright {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .footer__items {
+        flex-direction: column;
+        align-items: center;
+        padding:30px 0px 0px  0px;
+    }
+
+    .footer__item {
+        padding: 0px 0px 12px 0px;
+    }
+
+    .footer__link {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

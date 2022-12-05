@@ -14,3 +14,11 @@
         padding-top: 90px;
     }
 }
+
+@media (max-width: 600px) {
+    .caption {
+        padding-top: 70px;
+        font-size: 18px;
+        line-height: 22px;
+    }
+}

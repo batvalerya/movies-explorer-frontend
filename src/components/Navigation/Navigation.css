@@ -67,8 +67,19 @@
     margin-left: 0px;
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 768px) {
     .nav__account_hidden {
       display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav__link {
+        margin-left: 14px;
+        font-size: 10px;
+    }
+
+    .nav__link_signin {
+        padding: 5px 12px;
     }
 }

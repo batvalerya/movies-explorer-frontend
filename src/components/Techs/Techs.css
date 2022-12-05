@@ -90,3 +90,33 @@
         line-height: 15px;
     }
 }
+
+@media (max-width: 600px) {
+    .techs__container {
+        max-width: calc((300 / 320) * 100%);
+        padding-bottom: 70px;
+    }
+
+    .techs__title {
+        max-width: calc((292 / 300) * 100%);
+        padding: 60px 0px 24px 0px;
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .techs__subtitle {
+        max-width: calc((292 / 300) * 100%);
+        font-size: 11px;
+        line-height: 16px;
+        padding-bottom: 50px;
+    }
+
+    .techs__items {
+        max-width: calc((178 / 300) * 100%);
+    }
+
+    .techs__item {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

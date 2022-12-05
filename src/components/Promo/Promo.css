@@ -99,3 +99,31 @@
     max-width: 129px;
   }
 }
+
+@media (max-width: 600px) {
+  .promo__container{
+    max-width: calc((300 / 320) * 100%);
+    padding-top: 70px;
+    padding-bottom: 30px;
+  }
+
+  .promo__info {
+    margin-bottom: 80px;
+  }
+
+  .promo__subtitle {
+    max-width: 300px;
+  }
+
+  .promo__title {
+    margin: 44px 0 24px 0;
+    font-size: 30px;
+    line-height: 38px;
+    letter-spacing: -0.04em;
+  }
+
+  .promo__img {
+    width: 210px;
+    height: 206px;
+  }
+}

@@ -1,6 +1,6 @@
 .profile {
     background: #202020;
-    height: 100%;
+    height: 100vh;
 }
 
 .profile__container {
@@ -94,6 +94,9 @@
 }
 
 @media (max-width: 1075px) {
+    .profile {
+        height: 100%;
+    }
     .profile__container {
         max-width: calc((668 / 768) * 100%);
         padding: 236px 0px 269px 0px;
@@ -105,5 +108,32 @@
 
     .profile__edit-btn {
         padding-top: 210px;
+    }
+}
+
+@media (max-width: 600px) {
+    .profile__container {
+        max-width: calc((260 / 320) * 100%);
+        padding: 70px 0px 40px 0px;
+    }
+
+    .profile__title {
+        padding-bottom: 64px;
+    }
+
+    .profile__form {
+        width: 260px;
+    }
+
+    .profile__edit-btn {
+        font-size: 12px;
+        line-height: 15px;
+        color: #FFFFFF;
+        padding-top: 363px;
+    }
+
+    .profile__logout-btn {
+        font-size: 12px;
+        line-height: 15px;
     }
 }

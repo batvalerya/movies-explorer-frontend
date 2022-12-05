@@ -1,10 +1,11 @@
 .not-found-page {
-    position: static;
+    position: relative;
     background-color: #202020;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     height: 100vh;
     color: #FFFFFF;
 }
@@ -27,8 +28,8 @@
 }
 
 .not-found-page__btn {
-    position: relative;
-    top: 184px;
+    position: absolute;
+    bottom: 60px;
     padding: 0;
     border: none;
     background: none;
@@ -43,4 +44,33 @@
 .not-found-page__btn:hover {
     transition: opacity 1s ease;
     opacity: 0.8;
+}
+
+@media (max-width: 1075px) {
+    .not-found-page__btn {
+        bottom: 222px;
+    }
+
+    .not-found-page {
+        padding-bottom: 222px;
+    }
+}
+
+@media (max-width: 600px) {
+    .not-found-page__title {
+        font-size: 80px;
+        line-height: 97px;
+        padding-bottom: 10px;
+    }
+
+    .not-found-page__subtitle {
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .not-found-page__btn {
+        bottom: 30px;
+        font-size: 12px;
+        line-height: 15px;
+    }
 }

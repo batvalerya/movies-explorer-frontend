@@ -14,3 +14,9 @@
     margin: 0 auto;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
+
+@media (max-width: 600px) {
+    .header__container {
+        max-width: calc((292/320) * 100%);
+    }
+}

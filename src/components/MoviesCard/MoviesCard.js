@@ -7,13 +7,15 @@ function MoviesCard({movieCard}) {
 
     return(
         <li className="movies-card">
-            <div className="movie-card__info">
-                <h3 className="movies-card__title">{movieCard.nameRu}</h3>
-                <p className="movies-card__duration">{movieCard.duration}</p>
+            <div className="movie-card__container">
+                <div className="movie-card__info">
+                    <h3 className="movies-card__title">{movieCard.nameRu}</h3>
+                    <p className="movies-card__duration">{movieCard.duration}</p>
+                </div>
                 <button
-                className={`movies-card__button ${savedMovies ? 'movies-card__delete-button' : 'movies-card__save-button'}`}
-                    type="button" 
-                />
+                    className={`movies-card__button ${savedMovies ? 'movies-card__delete-button' : 'movies-card__save-button'}`}
+                        type="button" 
+                    />
             </div>
             <img className="movies-card__img" src={movieCard.image} alt={movieCard.nameRu} />
         </li>

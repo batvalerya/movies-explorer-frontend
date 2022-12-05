@@ -3,7 +3,7 @@ import logo from '../../images/logo.svg';
 
 function Logo() {
     return(
-        <Link to="/">
+        <Link to="/" className="logo">
             <img src={logo} alt="Логотип" className="header__logo" />
         </Link>
     )

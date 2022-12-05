@@ -73,3 +73,29 @@
         max-width: 27px;
     }
 }
+
+@media (max-width: 600px) {
+    .portfolio__container {
+        max-width: calc((300 / 320) * 100%);
+        padding-bottom: 51px;
+    }
+
+    .portfolio__title {
+        font-size: 14px;
+        padding-bottom: 20px;
+    }
+
+    .portfolio__item {
+        padding-bottom: 19px;
+    }
+
+    .portfolio__link {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .portfolio__arrow {
+        max-width: 18px;
+        height: 28px;
+    }
+}
