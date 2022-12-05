@@ -1,6 +1,5 @@
 .auth {
     background: #202020;
-    height: 100vh;
 }
 
 .auth__container {
@@ -27,7 +26,7 @@
 
 .auth__input-name {
     font-size: 10px;
-    font-weight: 00;
+    font-weight: 400;
     font-style: normal;
     line-height: 12px;
     color: #8B8B8B;
@@ -112,4 +111,11 @@
 .auth-form__link:hover {
   transition: opacity 1s ease;
   opacity: 0.5;
+}
+
+@media (max-width: 1075px) {
+    .auth__container {
+        max-width: calc((390 / 768) * 100%);
+        padding-bottom: 232px;
+    }
 }

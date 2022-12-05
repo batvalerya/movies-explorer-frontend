@@ -3,7 +3,7 @@
 }
 
 .search-form__container {
-    max-width: 1140px;
+    max-width: calc((1140 / 1280) * 100%);
     margin: 0 auto;
     padding: 60px 0px 10px 0px;
 }

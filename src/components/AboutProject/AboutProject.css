@@ -3,7 +3,7 @@
 }
 
 .about-project__container {
-    max-width: 1140px;
+    max-width: calc((1140 / 1280) * 100%);
     margin: 0 auto;
     padding-bottom: 110px;
 }
@@ -72,11 +72,22 @@
     font-weight: 500;
 }
 
-
-
-/* @media (max-width: 950px) {
-    .header {
-        max-width: 100%;
-        padding-top: 28px;
+@media (max-width: 1075px) {
+    .about-project__container {
+        max-width: calc((668 / 768) * 100%);
+        padding-bottom: 90px;
     }
-}   */
+    .about-project__description {
+        max-width: calc((319/680) * 100%);
+    }
+
+    .about-project__subtitle {
+        padding-bottom: 22px;
+    }
+
+    .about-project__text {
+        font-size: 12px;
+        line-height: 18px;
+        padding-bottom: 93px;
+    }
+}

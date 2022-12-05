@@ -6,7 +6,7 @@ function Header({additionalHeaderClass}) {
         <header className={`header ${additionalHeaderClass || ''}`}>
             <div className="header__container">
                 <Logo />
-                <Navigation isAuthorize={true}/>
+                <Navigation isAuthorize={false}/>
             </div>
         </header>
     )

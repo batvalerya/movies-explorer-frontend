@@ -7,12 +7,12 @@ function Navigation({isAuthorize}) {
                {!isAuthorize ? (
             <ul className="nav">
                 <li className="nav__item">
-                    <Link to="/sign-up" className="nav__link nav__link_signup">
+                    <Link to="/signup" className="nav__link nav__link_signup">
                         Регистрация
                     </Link>
                 </li>
                 <li className="nav__item">
-                    <Link to="/sign-in" className="nav__link nav__link_signin">
+                    <Link to="/signin" className="nav__link nav__link_signin">
                         Войти
                     </Link>
                 </li>

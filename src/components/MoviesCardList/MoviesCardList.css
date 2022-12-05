@@ -36,3 +36,18 @@
     cursor: pointer;
     padding: 0px;
 }
+
+@media (max-width: 1075px) {
+    .about-project__description {
+        max-width: calc((319/680) * 100%);
+    }
+
+    .movies-card-list__container {
+        max-width: calc((668 / 768) * 100%);
+        padding-top: 60px;
+    }
+
+    .movies-card-list__items {
+        margin-bottom: 80px;
+    }
+}

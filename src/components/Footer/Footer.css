@@ -3,7 +3,7 @@
 }
 
 .footer__container {
-    max-width: 1140px;
+    max-width: calc((1140 / 1280) * 100%);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -59,4 +59,10 @@
 .footer__link:hover {
     transition: opacity 1s ease;
     opacity: 0.8;
+}
+
+@media (max-width: 1075px) {
+    .footer__container {
+        max-width: calc((668 / 768) * 100%);
+    }
 }

@@ -48,3 +48,13 @@
     left: 18px;
     transition: left 0.2s linear 0.1s;
 }
+
+@media (max-width: 1075px) {
+    .search-form__checkbox-container {
+        padding-bottom: 51px;
+    }
+
+    .search-form__checkbox {
+        margin-right: 12px;
+    }
+}

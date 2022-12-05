@@ -62,3 +62,11 @@
     object-fit: contain;
     padding: 6px;
 }
+
+@media (max-width: 1075px) {
+    .movies-card__img {
+        max-height: 122px;
+        object-fit: contain;
+        padding: 6px;
+    }
+}
