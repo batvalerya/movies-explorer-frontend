@@ -6,6 +6,11 @@
     list-style-type: none;
 }
 
+.nav__container {
+    align-items: center;
+    display: flex;
+}
+
 .nav__item {
     align-self: center;
 }
@@ -67,8 +72,27 @@
     margin-left: 0px;
 }
 
+.hamburger__btn {
+    box-sizing: border-box;
+    background: none;
+    border: none;
+    background: url(../../images/hamburger.svg);
+    background-size: contain;
+    height: 43px;
+    width: 40px;
+    padding: 0;
+    align-self: center;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
     .nav__account_hidden {
+      display: none;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .hamburger__btn_hidden {
       display: none;
     }
 }

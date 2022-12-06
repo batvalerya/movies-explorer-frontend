@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import accountImg from '../../images/accountImg.svg'
+import Hamburger from '../Hamburger/Hamburger';
 
-function Navigation({isAuthorize}) {
+function Navigation({isAuthorize, onHamburgerIcon, isOpen, onHamburgerCloseBtn}) {
     return(
         <>
                {!isAuthorize ? (
@@ -18,6 +19,7 @@ function Navigation({isAuthorize}) {
                 </li>
             </ul>
         ) : (
+            <>
             <div className="nav__account nav__account_hidden">
                 <ul className="nav">
                     <li  className="nav__item">
@@ -38,6 +40,15 @@ function Navigation({isAuthorize}) {
                         </Link>
                 </div>
             </div>
+            <button 
+                className="hamburger__btn hamburger__btn_hidden" 
+                onClick={onHamburgerIcon}
+            />
+            <Hamburger
+                isOpen={isOpen}
+                onHamburgerCloseBtn={onHamburgerCloseBtn}
+            />
+            </>
         )
         }
         </>

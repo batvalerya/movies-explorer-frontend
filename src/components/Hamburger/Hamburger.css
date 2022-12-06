@@ -1,0 +1,110 @@
+.hamburger {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 520px;
+    height: 1024px;
+    background: #202020;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+
+.hamburger__menu_is-opened {
+    display: flex;
+}
+
+.hamburger__menu_is-closed {
+    display: none;
+}
+
+.hamburger__close-button {
+    display: block;
+    background: none;
+    border: none;
+    background: url("../../images/closeBtn.svg");
+    background-size: contain;
+    width: 22px;
+    height: 22px;
+    margin: 22px;
+    padding: 0px;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.hamburger__close-button:hover {
+    transition: opacity 1s ease;
+    opacity: 0.8;
+    transition-duration: .3s;
+    transform: scale(1.2);
+}
+
+.hamburger__menu {
+    max-width: calc((340 / 520) * 100%);
+    display: flex;
+    flex-direction: column;
+    padding: 105px 0px 0px 0px;
+    margin: 0;
+    list-style-type: none;
+}
+
+.hamburger__item {
+    align-self: center;
+    padding-bottom: 28px;
+}
+
+.hamburger__link {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    font-style: normal;
+    color: #FFFFFF;
+}
+
+.hamburger__link_active {
+    padding-bottom: 4px;
+    border-bottom: 2px solid #FFFFFF;
+}
+
+.hamburger__account-img {
+    margin: 0 7px 0px 0px;
+    width: 12px;
+    height: 14px;
+}
+
+.hamburger__link-account {
+    font-size: 14px;
+    color: #fff;
+    margin: 0px;
+    padding: 9px 12px;
+    border: 2px solid rgba(170, 170, 170, 0.2);;
+    border-radius: 50px;
+    position: fixed;
+    bottom: 90px;
+}
+
+@media (max-width: 600px) {
+    .hamburger {
+        width: 320px;
+    }
+
+    .hamburger__menu {
+        max-width: calc((300 / 320) * 100%);
+        padding-top: 100px;
+    }
+
+    .hamburger__item {
+        padding-bottom: 24px;
+    }
+
+    .hamburger__link_active {
+        padding-bottom: 7px;
+    }
+
+    .hamburger__link-account {
+        bottom: 46px;
+    }
+}
