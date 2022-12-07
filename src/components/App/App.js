@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes} from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext.js';
 import Main from '../Main/Main.js';
@@ -13,6 +13,7 @@ import NotFound from '../NotFound/NotFound.js';
 function App() {
 
   const [currentUser, setCurrentUser] = React.useState({});
+  const [loggedIn, setLoggedIn] = React.useState(false);
 
   React.useEffect(() => {
     setCurrentUser({ name: 'Виталий', email: 'pochta@yandex.ru' });
@@ -21,15 +22,41 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <Routes>
-          <Route path='/' element={<Main />} />
-          <Route path='/movies' element={<Movies />} />
-          <Route path='/saved-movies' element={<SavedMovies />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/signin' element={<Login />} />
-          <Route path='/signup' element={<Register />} />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
+        <Switch>
+
+              <Route exact path="/">
+                  <Main />
+              </Route>
+
+              <Route path="/movies">
+                  <Movies />
+              </Route>
+
+              <Route path="/saved-movies">
+                  <SavedMovies />
+              </Route>
+
+              <Route path="/profile">
+                  <Profile />
+              </Route>
+
+              <Route path="/signin">
+                  <Login />
+              </Route>
+
+            <Route path="/signup">
+              <Register/>
+            </Route>
+
+            <Route path="*">
+                  <NotFound />
+            </Route>
+
+            <Route path="*">
+              {loggedIn ? <Redirect to="/" /> : <Redirect to="/signin"/>}
+            </Route>
+            
+          </Switch>
       </div>
     </CurrentUserContext.Provider>
   )

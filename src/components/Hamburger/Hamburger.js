@@ -9,17 +9,17 @@ function Hamburger({ isOpen, onHamburgerCloseBtn }) {
             />
             <ul className="hamburger__menu">
                 <li  className="hamburger__item">
-                    <NavLink to="/" end className={({ isActive }) => isActive ? "hamburger__link hamburger__link_active" : "hamburger__link"}>
+                    <NavLink exact to="/" className="hamburger__link" activeClassName="hamburger__link_active">
                         Главная
                     </NavLink>
                 </li>
                 <li  className="hamburger__item">
-                    <NavLink to="/movies" className={({ isActive }) => isActive ? "hamburger__link hamburger__link_active" : "hamburger__link"}>
+                    <NavLink to="/movies" className="hamburger__link" activeClassName="hamburger__link_active">
                         Фильмы
                     </NavLink>
                 </li>
                 <li className="hamburger__item">
-                    <NavLink to="/saved-movies" className={({ isActive }) => isActive ? "hamburger__link hamburger__link_active" : "hamburger__link"}>
+                    <NavLink to="/saved-movies" className="hamburger__link" activeClassName="hamburger__link_active">
                         Сохранённые фильмы
                     </NavLink>
                 </li>
