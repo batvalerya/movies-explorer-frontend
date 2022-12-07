@@ -11,7 +11,7 @@ function Main() {
 
     return(
         <>
-            <Header additionalHeaderClass="header__main"/>
+            <Header additionalHeaderClass="header_main"/>
             <main className="content">
                 <Promo />
                 <AboutProject />

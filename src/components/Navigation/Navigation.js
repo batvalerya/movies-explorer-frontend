@@ -20,7 +20,7 @@ function Navigation({isAuthorize, onHamburgerIcon, isOpen, onHamburgerCloseBtn})
             </ul>
         ) : (
             <>
-            <div className="nav__account nav__account_hidden">
+            <div className="nav-account nav-account_hidden">
                 <ul className="nav">
                     <li  className="nav__item">
                         <Link to="/movies" className="nav__link nav__link_movies">

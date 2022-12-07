@@ -19,7 +19,7 @@ function Header({additionalHeaderClass}) {
         <header className={`header ${additionalHeaderClass || ''}`}>
             <div className="header__container">
                 <Logo />
-                <Navigation 
+                <Navigation
                     isAuthorize={true}
                     onHamburgerIcon={handleHamburgerMenuClick}
                     isOpen={isHamburgerMenuOpen}

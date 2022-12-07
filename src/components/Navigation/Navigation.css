@@ -35,7 +35,7 @@
     color: #fff;
 }
 
-.nav__account {
+.nav-account {
     display: flex;
     width: calc((676/1140) * 100% );
     justify-content: space-between;
@@ -86,7 +86,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .nav__account_hidden {
+    .nav-account_hidden {
       display: none;
     }
 }
