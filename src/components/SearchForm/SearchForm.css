@@ -48,6 +48,11 @@
     cursor: pointer;
 }
 
+.search-form__button:hover {
+    transition: opacity 1s ease;
+    opacity: 0.8;
+}
+
 @media (max-width: 600px) {
     .search-form__container {
         max-width: calc((300 / 320) * 100%);
