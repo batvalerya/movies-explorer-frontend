@@ -9,12 +9,12 @@ function Movies() {
     return(
         <>
             <Header />
-            <main className="movies">
+            <section className="movies">
                 <SearchForm />
                 {/* <Preloader /> */}
                 <MoviesCardList
                     moviesCards={moviesCards} />
-            </main>
+            </section>
 
             <Footer />
         </>
