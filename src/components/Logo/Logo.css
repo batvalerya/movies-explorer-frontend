@@ -5,5 +5,12 @@
 
 .logo {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+}
+
+@media (max-width: 320px) {
+    .logo {
+        display: flex;
+        justify-content: center;
+    }
 }
