@@ -86,13 +86,13 @@
     opacity: 0.8;
 }
 
-.auth-form__question {
+.auth-question {
     padding-top: 16px;
     display: flex;
     justify-content: center;
 }
 
-.auth-form__link-text {
+.auth-question__link-text {
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
@@ -101,11 +101,11 @@
     margin: 0px;
 }
 
-.auth-form__link-text_question {
+.auth-question__link-text_ask {
     color: #8B8B8B;
 }
 
-.auth-form__link {
+.auth-question__link {
     color: #4285F4;
     padding-left: 6px;
 }
@@ -148,11 +148,11 @@
         line-height: 15px;
     }
 
-    .auth-form__question {
+    .auth-question {
         padding-top: 14px;
     }
 
-    .auth-form__link-text {
+    .auth-question__link-text {
         font-size: 12px;
         line-height: 15px;
     }

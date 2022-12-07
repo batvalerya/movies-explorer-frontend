@@ -20,7 +20,7 @@ function Navigation({isAuthorize, onHamburgerIcon, isOpen, onHamburgerCloseBtn})
             </ul>
         ) : (
             <>
-            <div className="nav-account nav-account_hidden">
+            <div className="account-menu account-menu_hidden">
                 <ul className="nav">
                     <li  className="nav__item">
                         <Link to="/movies" className="nav__link nav__link_movies">
@@ -33,15 +33,15 @@ function Navigation({isAuthorize, onHamburgerIcon, isOpen, onHamburgerCloseBtn})
                         </Link>
                     </li>
                 </ul>
-                <div className="nav__item">
-                        <Link to="/profile" className="nav__link nav__link_account">
-                            <img src={accountImg} alt="Аккаунт" className="nav__account-img" />
+                <div className="account-menu__item">
+                        <Link to="/profile" className="account-menu__link account-menu__link_icon">
+                            <img src={accountImg} alt="Аккаунт" className="account-menu__img" />
                             Аккаунт
                         </Link>
                 </div>
             </div>
-            <button 
-                className="hamburger__btn hamburger__btn_hidden" 
+            <button
+                className="header__hamburger-btn header__hamburger-btn_hidden" 
                 onClick={onHamburgerIcon}
             />
             <Hamburger

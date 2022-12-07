@@ -35,19 +35,32 @@
     color: #fff;
 }
 
-.nav-account {
+.account-menu {
     display: flex;
     width: calc((676/1140) * 100% );
     justify-content: space-between;
 }
 
-.nav__account-img {
+.account-menu {
+    align-self: center;
+}
+
+.account-menu__link {
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    font-style: normal;
+}
+
+.account-menu__img {
     margin: 0 7px 0px 0px;
     width: 12px;
     height: 14px;
 }
 
-.nav__link_account {
+.account-menu__link_icon {
     font-size: 14px;
     color: #fff;
     margin: 0px;
@@ -72,7 +85,7 @@
     margin-left: 0px;
 }
 
-.hamburger__btn {
+.header__hamburger-btn{
     box-sizing: border-box;
     background: none;
     border: none;
@@ -86,13 +99,13 @@
 }
 
 @media screen and (max-width: 768px) {
-    .nav-account_hidden {
+    .account-menu_hidden {
       display: none;
     }
 }
 
 @media screen and (min-width: 769px) {
-    .hamburger__btn_hidden {
+    .header__hamburger-btn_hidden {
       display: none;
     }
 }

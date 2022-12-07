@@ -12,11 +12,11 @@
     z-index: 1;
 }
 
-.hamburger__menu_is-opened {
+.hamburger_is-opened {
     display: flex;
 }
 
-.hamburger__menu_is-closed {
+.hamburger_is-closed {
     display: none;
 }
 

@@ -3,7 +3,7 @@ import accountImg from '../../images/accountImg.svg'
 
 function Hamburger({ isOpen, onHamburgerCloseBtn }) {
     return(
-        <div className={`hamburger ${isOpen ? 'hamburger__menu_is-opened' : 'hamburger__menu_is-closed'}`}>
+        <div className={`hamburger ${isOpen ? 'hamburger_is-opened' : 'hamburger_is-closed'}`}>
             <button className="hamburger__close-button"
             onClick={onHamburgerCloseBtn}
             />

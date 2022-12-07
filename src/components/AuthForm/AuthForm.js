@@ -54,11 +54,11 @@ function AuthForm({isSignIn, authTitle, formName, submitText, formQuestion, ques
                 <button className="auth-btn" type="submit">
                         {submitText}
                 </button>
-                <div className="auth-form__question">
-                    <p className="auth-form__link-text auth-form__link-text_question">
+                <div className="auth-question">
+                    <p className="auth-question__link-text auth-question__link-text_ask">
                         {formQuestion}
                     </p>
-                    <Link to={questionLink} className="auth-form__link auth-form__link-text">
+                    <Link to={questionLink} className="auth-question__link auth-question__link-text">
                         {questionLinkText}
                     </Link>
                 </div>

@@ -7,8 +7,8 @@ function MoviesCard({movieCard}) {
 
     return(
         <li className="movies-card">
-            <div className="movie-card__container">
-                <div className="movie-card__info">
+            <div className="movies-card__container">
+                <div className="movies-card__info">
                     <h3 className="movies-card__title">{movieCard.nameRu}</h3>
                     <p className="movies-card__duration">{movieCard.duration}</p>
                 </div>
