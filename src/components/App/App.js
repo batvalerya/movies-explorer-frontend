@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext.js';
@@ -9,13 +10,14 @@ import Profile from '../Profile/Profile.js';
 import Register from '../Register/Register.js';
 import Login from '../Login/Login.js';
 import NotFound from '../NotFound/NotFound.js';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.js';
 
 function App() {
 
-  const [currentUser, setCurrentUser] = React.useState({});
-  const [loggedIn, setLoggedIn] = React.useState(false);
-
-  React.useEffect(() => {
+  const [currentUser, setCurrentUser] = useState({});
+  const [loggedIn, setLoggedIn] = useState(true);
+  
+  useEffect(() => {
     setCurrentUser({ name: 'Виталий', email: 'pochta@yandex.ru' });
   }, []);
 
@@ -24,39 +26,43 @@ function App() {
       <div className="page">
         <Switch>
 
-              <Route exact path="/">
-                  <Main />
-              </Route>
+          <ProtectedRoute
+            exact path="/"
+            loggedIn={loggedIn}
+            component={Main}
+          />
 
-              <Route path="/movies">
-                  <Movies />
-              </Route>
+          <ProtectedRoute
+            path="/movies"
+            loggedIn={loggedIn}
+            component={Movies}
+          />
 
-              <Route path="/saved-movies">
-                  <SavedMovies />
-              </Route>
+          <ProtectedRoute
+            path="/saved-movies"
+            loggedIn={loggedIn}
+            component={SavedMovies}
+          />
 
-              <Route path="/profile">
-                  <Profile />
-              </Route>
+          <ProtectedRoute
+            path="/profile"
+            loggedIn={loggedIn}
+            component={Profile}
+          />
 
-              <Route path="/signin">
-                  <Login />
-              </Route>
+          <Route path="/signin">
+            <Login />
+          </Route>
 
-            <Route path="/signup">
-              <Register/>
-            </Route>
+          <Route path="/signup">
+            <Register/>
+          </Route>
 
-            <Route path="*">
-                  <NotFound />
-            </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
 
-            <Route path="*">
-              {loggedIn ? <Redirect to="/" /> : <Redirect to="/signin"/>}
-            </Route>
-            
-          </Switch>
+        </Switch>
       </div>
     </CurrentUserContext.Provider>
   )
