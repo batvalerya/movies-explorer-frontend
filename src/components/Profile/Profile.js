@@ -4,7 +4,7 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 
 
-function Profile() {
+function Profile({ onLogout }) {
     const currentUser = React.useContext(CurrentUserContext);
     
     return(
@@ -39,7 +39,7 @@ function Profile() {
                             Редактировать
                         </button>
                     </form>
-                    <button className="profile__logout-btn" type="button">
+                    <button className="profile__logout-btn" type="button" onClick={() => onLogout()}>
                         Выйти из аккаунта
                     </button>
                 </div>

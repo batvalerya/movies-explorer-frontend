@@ -1,22 +1,24 @@
 import Logo from "../Logo/Logo.js";
 import { Link } from 'react-router-dom';
 
-function AuthForm({isSignIn, authTitle, formName, submitText, formQuestion, questionLink, questionLinkText }) {
+function AuthForm(props) {
     return(
         <section className="auth">
             <div className="auth__container">
                 <Logo />
                 <h2 className="auth__title">
-                    {authTitle}
+                    {props.authTitle}
                 </h2>
-                <form className="auth__form" noValidate name={formName}>
-                    {!isSignIn && (
+                <form className="auth__form" noValidate name={props.formName} onSubmit={props.handleChangeSubmit}>
+                    {!props.isSignIn && (
                         <div className="auth__input-container">
                             <p className="auth__input-name">Имя</p>
                             <input
                                 className="auth__input"
                                 type="text"
                                 name="name"
+                                value={props.name}
+                                onChange={props.handleChange}
                             />
                             <span className="auth__error">
                                 Что-то пошло не так...
@@ -32,7 +34,8 @@ function AuthForm({isSignIn, authTitle, formName, submitText, formQuestion, ques
                             name="email"
                             minLength="2"
                             maxLength="30"
-
+                            value={props.email}
+                            onChange={props.handleChange}
                         />
                         <span className="auth__error">
                             Что-то пошло не так...
@@ -45,21 +48,25 @@ function AuthForm({isSignIn, authTitle, formName, submitText, formQuestion, ques
                             className="auth__input"
                             type="password"
                             name="password"
+                            value={props.password}
+                            onChange={props.handleChange}
                         />
-                        <span className="auth__error" style={{ visibility: 'visible' }}>
+                        <span className="auth__error">
                             Что-то пошло не так...
                         </span>
                     </div>
+
+                    <button className="auth-btn" type="submit">
+                        {props.submitText}
+                    </button>
+                    
                 </form>
-                <button className="auth-btn" type="submit">
-                        {submitText}
-                </button>
                 <div className="auth-question">
                     <p className="auth-question__link-text auth-question__link-text_ask">
-                        {formQuestion}
+                        {props.formQuestion}
                     </p>
-                    <Link to={questionLink} className="auth-question__link auth-question__link-text">
-                        {questionLinkText}
+                    <Link to={props.questionLink} className="auth-question__link auth-question__link-text">
+                        {props.questionLinkText}
                     </Link>
                 </div>
             </div>
