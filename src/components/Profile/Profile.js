@@ -1,11 +1,12 @@
 import React from 'react';
+import { useContext, useEffect } from "react";
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 
 
 function Profile({ onLogout }) {
-    const currentUser = React.useContext(CurrentUserContext);
+    const currentUser = useContext(CurrentUserContext);
     
     return(
         <>

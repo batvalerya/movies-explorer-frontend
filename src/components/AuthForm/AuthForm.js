@@ -2,7 +2,16 @@ import Logo from "../Logo/Logo.js";
 import { Link } from 'react-router-dom';
 import useFormWithValidation from '../../hooks/useFormWithValidation.js';
 
-function AuthForm({authTitle, formName, handleChangeSubmit, isSignIn, submitText, formQuestion, questionLink, questionLinkText }) {
+function AuthForm({
+    authTitle,
+    formName,
+    handleChangeSubmit,
+    isSignIn,
+    submitText,
+    formQuestion,
+    questionLink,
+    questionLinkText,
+    errorRegisterMessage}) {
 
     const { values, handleChange, errors, isValid } = useFormWithValidation({
         name: '',
@@ -74,6 +83,10 @@ function AuthForm({authTitle, formName, handleChangeSubmit, isSignIn, submitText
                             {errors.password}
                         </span>
                     </div>
+
+                    <span className="auth__error-message">
+                        {errorRegisterMessage}
+                    </span>
 
                     <button className={`auth-btn ${ !isValid ? 'auth-btn_disabled' : 'auth-btn_active'}`} type="submit" disabled={!isValid}>
                         {submitText}

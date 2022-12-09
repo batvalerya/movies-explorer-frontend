@@ -52,13 +52,18 @@
 
 .auth__error {
     visibility: hidden;
+}
+
+.auth__error-message {
+    padding-top: 135px;
+    padding-bottom: 15px;
     display: block;
     font-size: 10px;
     font-weight: 400;
     font-style: normal;
     line-height: 12px;
     color: #EE3465;
-    padding-top: 6px;
+    text-align: center;
 }
 
 .auth__error_visible {
@@ -68,8 +73,8 @@
     font-style: normal;
     line-height: 12px;
     color: #EE3465;
-    visibility: visible;
     padding-top: 6px;
+    visibility: visible;
 }
 
 .auth-btn {
@@ -83,7 +88,6 @@
     border: none;
     padding: 0px;
     border-radius: 3px;
-    margin-top: 135px;
 }
 
 .auth-btn_active {
@@ -159,7 +163,6 @@
     .auth-btn {
         font-size: 12px;
         line-height: 15px;
-        margin-top: 222px;
     }
 
     .auth-question {

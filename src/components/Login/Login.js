@@ -1,6 +1,6 @@
 import AuthForm from "../AuthForm/AuthForm.js"
 
-function Login({ onLogin, loggedIn }) {
+function Login({ onLogin, loggedIn, registerMessage }) {
 
     function handleChangeSubmit (loginData) {
         onLogin(loginData);
@@ -16,6 +16,7 @@ function Login({ onLogin, loggedIn }) {
             formQuestion={"Ещё не зарегистрированы?"}
             questionLink={"/signup"}
             questionLinkText={"Регистрация"}
+            errorRegisterMessage={registerMessage}
         />
     )
 };

@@ -37,7 +37,6 @@ function App() {
     })
       .catch((err) => {
         updateRegisterMessage(false);
-        console.log(err)
         if (err.includes("409")) {
           updateRegisterMessage("Пользователь с таким email уже существует.");
         } else {
@@ -51,11 +50,16 @@ function App() {
       .then(({token: jwt}) => {
         localStorage.setItem('jwt', jwt);
         setLoggedIn(true);
-        history.push('/');
+        history.push('/movies');
     })
       .catch((err) => {
         updateRegisterMessage(false);
-    });
+        if (err.includes("401")) {
+          updateRegisterMessage("Вы ввели неправильный логин или пароль.");
+        } else {
+          updateRegisterMessage("При авторизации произошла ошибка. Токен не передан или передан не в том формате");
+        }
+      })
   };
 
   const onLogout = () => {
@@ -74,7 +78,7 @@ useEffect(() => {
       .then((userInfo) => {
         setCurrentUser(userInfo)
         setLoggedIn(true);
-        history.push('/');
+        history.push('/movies');
     })
     .catch((err) => {
       console.log('При запросе данных о пользователе произошла ошибка', err)
@@ -127,6 +131,7 @@ useEffect(() => {
           <Route path="/signin">
             <Login
               onLogin={onLogin}
+              registerMessage={registerMessage}
             />
           </Route>
 
@@ -134,6 +139,7 @@ useEffect(() => {
             <Register
               onRegister={onRegister}
               loggedIn={loggedIn}
+              registerMessage={registerMessage}
             />
           </Route>
 
