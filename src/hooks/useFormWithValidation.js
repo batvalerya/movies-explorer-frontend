@@ -7,6 +7,15 @@ function useFormWithValidation() {
 
   const handleChange = (evt) => {
     const { value, name } = evt.target;
+    const validityState = evt.target.validity;
+
+    if (name === "password") {
+         if (validityState.tooShort) {
+          evt.target.setCustomValidity("Пароль должно быть не короче 8 символов");
+        } else {
+          evt.target.setCustomValidity("");
+        }
+      }
 
     setValues({ ...values, [name]: value });
     setErrors({ ...errors, [name]: evt.target.validationMessage });
