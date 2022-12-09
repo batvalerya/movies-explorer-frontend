@@ -74,9 +74,4 @@ const savedMovies = [
   },
 ];
 
-const user = {
-  name:'Виталя',
-  email: 'pochta@yandex.ru'
-}
-
-export {savedMovies, moviesCards, user};
+export { savedMovies, moviesCards };

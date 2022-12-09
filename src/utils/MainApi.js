@@ -44,6 +44,19 @@ class MainApi {
         });
     };
 
+    updateUserInfo({name, email}) {
+      return fetch(`${this._baseUrl}/users/me`, {
+        method: 'PATCH',
+        headers: this._headers,
+        credentials: 'include',
+        body: JSON.stringify({
+            name,
+            email,
+          })
+      })
+      .then(this._handleServerResponse)
+    }
+
     // getContent () {
     //     return fetch(`${this._baseUrl}/users/me`, {
     //         method: 'GET',

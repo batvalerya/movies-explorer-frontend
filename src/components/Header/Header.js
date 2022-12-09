@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Navigation from '../Navigation/Navigation.js';
 import Logo from '../Logo/Logo.js'
 
-function Header({additionalHeaderClass}) {
+function Header({ additionalHeaderClass, loggedIn }) {
 
     const [isHamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
 
@@ -20,7 +20,7 @@ function Header({additionalHeaderClass}) {
             <div className="header__container">
                 <Logo />
                 <Navigation
-                    isAuthorize={true}
+                    isAuthorize={loggedIn}
                     onHamburgerIcon={handleHamburgerMenuClick}
                     isOpen={isHamburgerMenuOpen}
                     onHamburgerCloseBtn={handleHamburgerCloseBtnClick}

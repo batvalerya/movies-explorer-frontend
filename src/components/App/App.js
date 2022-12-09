@@ -22,18 +22,34 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const [registerMessage, setRegisterMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
+  const [isEditButtonActive, setEditButtonActive] = useState(false);
 
 //функции
+
+      function handleEditButtonClick() {
+        if(!isEditButtonActive) {
+            setEditButtonActive(true);
+            updateErrorMessage("");
+        } else {
+            setEditButtonActive(false);
+        }
+      }
 
       function updateRegisterMessage(res) {
         setRegisterMessage(res);
       };
 
+      function updateErrorMessage(res) {
+        setErrorMessage(res);
+      };
+
   const onRegister = (data) => {
     return mainApi.register(data)
       .then(() => {
+        onLogin(data)
         updateRegisterMessage(true);
-        history.push('/signin');
+        history.push('/movies');
     })
       .catch((err) => {
         updateRegisterMessage(false);
@@ -65,8 +81,25 @@ function App() {
   const onLogout = () => {
     setLoggedIn(false);
     localStorage.removeItem('jwt');
-    history.push('/signin');
+    history.push('/');
   };
+
+  const onEditProfileInfo = (profileInfo) => {
+    return mainApi.updateUserInfo(profileInfo)
+      .then((userInfo) => {
+        setCurrentUser(userInfo);
+        setTimeout(() => handleEditButtonClick(), 1000);
+        updateErrorMessage("Данные успешно обновлены");
+      })
+      .catch((err) => {
+        updateErrorMessage(false);
+        if (err.includes("409")) {
+          updateErrorMessage("Пользователь с таким email уже существует.");
+        } else {
+          updateErrorMessage("При обновлении профиля произошла ошибка.");
+        }
+      })
+  }
 
 useEffect(() => {
   const jwt = localStorage.getItem('jwt')
@@ -86,28 +119,14 @@ useEffect(() => {
   }
 }, [loggedIn]);
 
-  // useEffect(() => {
-  //   mainApi.getUserInfo()
-  //       .then((result) => {
-  //         setCurrentUser(result)
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       }
-  //   )
-  // }, [loggedIn]
-  // );
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Switch>
 
-          <ProtectedRoute
-            exact path="/"
-            loggedIn={loggedIn}
-            component={Main}
-          />
+          <Route exact path='/'>
+            <Main loggedIn={loggedIn} />
+          </Route>
 
           <ProtectedRoute
             path="/movies"
@@ -126,6 +145,10 @@ useEffect(() => {
             loggedIn={loggedIn}
             component={Profile}
             onLogout={onLogout}
+            onEditProfileInfo={onEditProfileInfo}
+            errorMessage={errorMessage}
+            isEditButtonActive={isEditButtonActive}
+            handleEditButtonClick={handleEditButtonClick}
           />
 
           <Route path="/signin">

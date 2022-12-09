@@ -78,6 +78,7 @@ function AuthForm({
                             value={values.password}
                             onChange={handleChange}
                             required
+                            autoComplete="on"
                         />
                         <span className={`auth__error ${errors.password && 'auth__error_visible'}`}>
                             {errors.password}

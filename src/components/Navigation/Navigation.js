@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import accountImg from '../../images/accountImg.svg'
 import Hamburger from '../Hamburger/Hamburger';
 
-function Navigation({isAuthorize, onHamburgerIcon, isOpen, onHamburgerCloseBtn}) {
+function Navigation({ isAuthorize, onHamburgerIcon, isOpen, onHamburgerCloseBtn }) {
     return(
         <>
-               {!isAuthorize ? (
+        {!isAuthorize ? (
             <ul className="nav">
                 <li className="nav__item">
                     <Link to="/signup" className="nav__link nav__link_signup">

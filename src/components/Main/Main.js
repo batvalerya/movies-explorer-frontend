@@ -7,11 +7,11 @@ import Portfolio from "../Portfolio/Portfolio.js";
 import Footer from "../Footer/Footer.js";
 import Header from "../Header/Header.js";
 
-function Main({ onLogout }) {
+function Main({ loggedIn }) {
 
     return(
         <>
-            <Header additionalHeaderClass="header_main"/>
+            <Header additionalHeaderClass="header_main" loggedIn={loggedIn}/>
             <main className="content">
                 <Promo />
                 <AboutProject />

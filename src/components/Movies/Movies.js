@@ -5,10 +5,10 @@ import SearchForm from "../SearchForm/SearchForm.js";
 import MoviesCardList from "../MoviesCardList/MoviesCardList.js";
 import { moviesCards } from "../../utils/consts.js"
 
-function Movies() {
+function Movies({ loggedIn }) {
     return(
         <>
-            <Header />
+            <Header loggedIn={ loggedIn} />
             <section className="movies">
                 <SearchForm />
                 {/* <Preloader /> */}

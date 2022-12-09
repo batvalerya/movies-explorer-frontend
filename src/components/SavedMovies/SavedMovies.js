@@ -4,10 +4,10 @@ import {savedMovies} from "../../utils/consts.js";
 import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer.js";
 
-function SavedMovies() {
+function SavedMovies({ loggedIn }) {
     return(
         <>
-            <Header />
+            <Header loggedIn={ loggedIn }/>
             <section className="saved-movies-card-list">
                 <SearchForm />
                 <MoviesCardList moviesCards={savedMovies} />
