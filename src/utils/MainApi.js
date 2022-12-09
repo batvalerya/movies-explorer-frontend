@@ -44,16 +44,16 @@ class MainApi {
         });
     };
 
-    getContent () {
-        return fetch(`${this._baseUrl}/users/me`, {
-            method: 'GET',
-            headers: this._headers,
-            credentials: 'include',
-          })
-          .then((response) => {
-            return this._handleServerResponse(response);
-        });
-    }
+    // getContent () {
+    //     return fetch(`${this._baseUrl}/users/me`, {
+    //         method: 'GET',
+    //         headers: this._headers,
+    //         credentials: 'include',
+    //       })
+    //       .then((response) => {
+    //         return this._handleServerResponse(response);
+    //     });
+    // }
 
     getUserInfo() {
         return this._request('/users/me');

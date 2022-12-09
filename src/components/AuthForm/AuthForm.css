@@ -21,10 +21,6 @@
     margin: 0px;
 }
 
-.auth__form {
-    padding-bottom: 134px;
-}
-
 .auth__input-name {
     font-size: 10px;
     font-weight: 400;
@@ -55,33 +51,54 @@
 }
 
 .auth__error {
+    visibility: hidden;
     display: block;
     font-size: 10px;
     font-weight: 400;
     font-style: normal;
     line-height: 12px;
     color: #EE3465;
-    visibility: hidden;
+    padding-top: 6px;
+}
+
+.auth__error_visible {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 12px;
+    color: #EE3465;
+    visibility: visible;
     padding-top: 6px;
 }
 
 .auth-btn {
     min-width: 100%;
     min-height: 45px;
-    background: #4285F4;
-    color: #FFFFFF;
     align-self: center;
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    cursor: pointer;
     box-sizing: border-box;
     border: none;
     padding: 0px;
     border-radius: 3px;
+    margin-top: 135px;
 }
 
-.auth-btn:hover {
+.auth-btn_active {
+    background: #4285F4;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.auth-btn_disabled {
+    opacity: 0.5;
+    background: #F8F8F8;
+    color: #C2C2C2;
+}
+
+.auth-btn_active:hover {
     transition: opacity 1s ease;
     opacity: 0.8;
 }
@@ -139,13 +156,10 @@
         text-align: center;
     }
 
-    .auth__form {
-        padding-bottom: 237px;
-    }
-
     .auth-btn {
         font-size: 12px;
         line-height: 15px;
+        margin-top: 222px;
     }
 
     .auth-question {

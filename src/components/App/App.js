@@ -64,34 +64,35 @@ function App() {
     history.push('/signin');
   };
 
-//   useEffect(() => {
-//     const jwt = localStorage.getItem('jwt')
-//     console.log(jwt)
-//     if(!jwt) {
-//       return;
-//     } else {
-//       mainApi.getContent()
-//         .then(() => {
-//           setLoggedIn(true);
-//           history.push('/');
-//       })
-//       .catch(() => {
-//         console.log('Ошибка')
-//       })
-//     }
-// }, []);
+useEffect(() => {
+  const jwt = localStorage.getItem('jwt')
 
-  useEffect(() => {
+  if(!jwt) {
+    return;
+  } else {
     mainApi.getUserInfo()
-        .then((result) => {
-          setCurrentUser(result)
-        })
-        .catch((err) => {
-          console.log(err);
-        }
-    )
-  }, [loggedIn]
-  );
+      .then((userInfo) => {
+        setCurrentUser(userInfo)
+        setLoggedIn(true);
+        history.push('/');
+    })
+    .catch((err) => {
+      console.log('При запросе данных о пользователе произошла ошибка', err)
+    })
+  }
+}, [loggedIn]);
+
+  // useEffect(() => {
+  //   mainApi.getUserInfo()
+  //       .then((result) => {
+  //         setCurrentUser(result)
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       }
+  //   )
+  // }, [loggedIn]
+  // );
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
