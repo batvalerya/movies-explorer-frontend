@@ -61,14 +61,14 @@
 }
 
 .movies-card__img {
-    max-height: 134px;
+    height: 134px;
     object-fit: cover;
     padding: 6px;
+    width: 220px;
 }
 
 @media (max-width: 1075px) {
     .movies-card__img {
-        /* max-height: 122px; */
         object-fit: cover;
         padding: 6px;
     }

@@ -9,7 +9,7 @@ function MoviesCard({movieCard}) {
         <li className="movies-card">
             <div className="movies-card__container">
                 <div className="movies-card__info">
-                    <h3 className="movies-card__title">{movieCard.nameRu}</h3>
+                    <h3 className="movies-card__title">{movieCard.nameRU}</h3>
                     <p className="movies-card__duration">{movieCard.duration}</p>
                 </div>
                 <button
@@ -17,7 +17,7 @@ function MoviesCard({movieCard}) {
                         type="button" 
                     />
             </div>
-            <img className="movies-card__img" src={movieCard.image} alt={movieCard.nameRu} />
+            <img className="movies-card__img" src={`https://api.nomoreparties.co${movieCard.image.url}`} alt={movieCard.nameRU} />
         </li>
     )
 }

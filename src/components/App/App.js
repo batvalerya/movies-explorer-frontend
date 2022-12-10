@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import { mainApi } from '../../utils/MainApi.js';
+import { moviesApi } from '../../utils/MoviesApi.js';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext.js';
 
@@ -24,6 +25,7 @@ function App() {
   const [registerMessage, setRegisterMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const [isEditButtonActive, setEditButtonActive] = useState(false);
+  const [moviesCards, setMoviesCards] = useState([]);
 
 //функции
 
@@ -119,19 +121,34 @@ useEffect(() => {
   }
 }, [loggedIn]);
 
+// useEffect(() => {
+//   moviesApi.getMovies()
+//   .then((res) => {
+//     setMoviesCards(res);
+//     console.log(res)
+//   })
+//   .catch(() => {
+//       console.log('Ошибка');
+//   }
+//   )}, [loggedIn]
+// );
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Switch>
 
           <Route exact path='/'>
-            <Main loggedIn={loggedIn} />
+            <Main 
+              loggedIn={loggedIn}
+            />
           </Route>
 
           <ProtectedRoute
             path="/movies"
             loggedIn={loggedIn}
             component={Movies}
+            moviesCards={moviesCards}
           />
 
           <ProtectedRoute

@@ -53,6 +53,17 @@
     opacity: 0.8;
 }
 
+.search-form__error {
+    padding-top: 15px;
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 12px;
+    color: #EE3465;
+    text-align: center;
+}
+
 @media (max-width: 600px) {
     .search-form__container {
         max-width: calc((300 / 320) * 100%);
