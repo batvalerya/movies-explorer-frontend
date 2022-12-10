@@ -1,4 +1,4 @@
-function FilterCheckbox() {
+function FilterCheckbox({ toggleCheckbox, isCheckboxActive }) {
     return(
         <div className="search-form__checkbox-container">
             <label htmlFor="checkbox"  className="search-form__lable">
@@ -6,6 +6,8 @@ function FilterCheckbox() {
                     className="search-form__checkbox"
                     type="checkbox"
                     name="checkbox"
+                    onChange={toggleCheckbox}
+                    checked={isCheckboxActive}
                 />
                 Короткометражки
             </label>

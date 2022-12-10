@@ -1,5 +1,6 @@
 import { moviesApi } from "../../utils/MoviesApi.js";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
@@ -9,10 +10,15 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList.js";
 
 function Movies({ loggedIn, onSaveMovie, savedMovies }) {
 
+    const location = useLocation();
+    const moviesPage = location.pathname === '/movies';
+
     const [isLoading, setIsLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [foundMovies, setFoundMovies] = useState([]);
     const [searchErrorMessage, setSearchErrorMessage] = useState("");
+
+    const [isCheckboxActive, setCheckboxActive] = useState(false);
 
     function getMovies() {
         setIsLoading(true);
@@ -41,8 +47,9 @@ function Movies({ loggedIn, onSaveMovie, savedMovies }) {
                 setSearchErrorMessage("Ничего не найдено");
                 setFoundMovies([]);
             }
-    }
 
+            checkIsCheckboxActive(filteredMovies)
+    }
 
     function handleSearch(value) {
         const allMovies = JSON.parse(localStorage.getItem("movies"));
@@ -54,7 +61,46 @@ function Movies({ loggedIn, onSaveMovie, savedMovies }) {
             localStorage.setItem("searchQuery", value);
             moviesFilter(value, allMovies);
         }
+
+        isCheckboxActive
+        ? setFoundMovies(JSON.parse(localStorage.getItem("shortMovies")))
+        : setFoundMovies(JSON.parse(localStorage.getItem("foundMovies")));
       }
+
+      function checkIsCheckboxActive(filteredMovies) {
+        if (isCheckboxActive) {
+          localStorage.setItem("isCheckboxActive", "true");
+          const shortMovies = filteredMovies.filter((movie) => {
+            return movie.duration <= 40;
+          });
+          localStorage.setItem(
+            "shortMovies",
+            JSON.stringify(shortMovies)
+          );
+          return shortMovies;
+        } else {
+          localStorage.setItem("isCheckboxActive", "false");
+          return;
+        }
+      }
+
+      function toggleCheckbox() {
+        setCheckboxActive(!isCheckboxActive);
+      }
+
+      useEffect(() => {
+        if (localStorage.getItem("searchQuery")) {
+            setSearchQuery(localStorage.getItem("searchQuery"));
+        }
+        if (localStorage.getItem("isCheckboxActive") === "true") {
+            setCheckboxActive(true);
+            setFoundMovies(JSON.parse(localStorage.getItem("shortMovies")));
+        }
+        if (localStorage.getItem("isCheckboxActive") === "false") {
+            setCheckboxActive(false);
+            setFoundMovies(JSON.parse(localStorage.getItem("foundMovies")));
+        }
+      }, [moviesPage]);
 
     return(
         <>
@@ -64,6 +110,8 @@ function Movies({ loggedIn, onSaveMovie, savedMovies }) {
                     getMovies={getMovies}
                     handleSearch={handleSearch}
                     searchQuery={searchQuery}
+                    toggleCheckbox={toggleCheckbox}
+                    isCheckboxActive={isCheckboxActive}
                 />
                 { isLoading && <Preloader /> }
 
