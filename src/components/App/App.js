@@ -62,11 +62,10 @@ function App() {
   }
 
   function handleMovieDelete(movieId) {
-    console.log(movieId)
     mainApi.deleteMovie(movieId)
       .then((res) => {
         setSavedMovies((state) =>
-          state.filter((m) => m.id || m.movieId !== movieId)
+          state.filter((m) => m._id !== movieId)
         );
         console.log(res)
       })
