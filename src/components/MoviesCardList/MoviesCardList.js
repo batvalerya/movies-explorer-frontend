@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 import MoviesCard from "../MoviesCard/MoviesCard.js";
 
-function MoviesCardList({ moviesCards, onSaveMovie, onDeleteMovie, savedMovies, handleShowMoreButtonClick }) {
+function MoviesCardList({ moviesCards, onSaveMovie, onDeleteMovie, savedMovies }) {
 
     const location = useLocation();
     const moviesPage = location.pathname === '/movies';
@@ -26,10 +26,8 @@ function MoviesCardList({ moviesCards, onSaveMovie, onDeleteMovie, savedMovies, 
               setPaginator({ step: 7, start: 5 });
               break;
           }
-        } else {
-          setPaginator({ start: moviesCards.length });
         }
-      }, [size.width, moviesCards.length, moviesPage]);
+      }, [moviesPage]);
     
       const handleMoreButtonClick = () => {
         setPaginator((prev) => ({
@@ -42,20 +40,23 @@ function MoviesCardList({ moviesCards, onSaveMovie, onDeleteMovie, savedMovies, 
     return(
         <section className="movies-card-list">
             <div className="movies-card-list__container">
+            { moviesCards && (
+                <>
                 <ul className="movies-card-list__items">
-                    {moviesCards.slice(0, paginator.start).map((movieCard) => (
-                            <MoviesCard
-                            key={moviesPage ? movieCard.id : movieCard.movieId}
-                            movieCard={movieCard}
-                            onSaveMovie={onSaveMovie}
-                            onDeleteMovie={onDeleteMovie}
-                            savedMoviesCards={savedMovies}
-                        />
-                        ))}
+                    { moviesCards.slice(0, paginator.start).map((movieCard) => (
+                        <MoviesCard
+                        key={moviesPage ? movieCard.id : movieCard.movieId}
+                        movieCard={movieCard}
+                        onSaveMovie={onSaveMovie}
+                        onDeleteMovie={onDeleteMovie}
+                        savedMoviesCards={savedMovies}
+                    />
+                    )) }
                 </ul>
-
                 {moviesPage && moviesCards.length > paginator.start && (
                     <button className="movies-card-list__more-btn" onClick={handleMoreButtonClick}>Ещё</button>
+                )}
+                </>
                 )}
             </div>
         </section>

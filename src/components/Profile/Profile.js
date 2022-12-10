@@ -29,7 +29,6 @@ function Profile({ onLogout, loggedIn, onEditProfileInfo, errorMessage, isEditBu
           name: currentUser.name,
           email: currentUser.email,
         });
-        handleEditButtonClick();
     }, []);
 
     useEffect(() => {

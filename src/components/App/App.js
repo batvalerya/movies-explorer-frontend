@@ -2,7 +2,6 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import { mainApi } from '../../utils/MainApi.js';
-import { moviesApi } from '../../utils/MoviesApi.js';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext.js';
 
@@ -112,6 +111,7 @@ function App() {
     setLoggedIn(false);
     localStorage.removeItem('jwt');
     history.push('/');
+    localStorage.clear();
   };
 
   const onEditProfileInfo = (profileInfo) => {

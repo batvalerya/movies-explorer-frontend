@@ -61,6 +61,7 @@ function SavedMovies({ loggedIn, savedMovies, onDeleteMovie }) {
             return filteredShortMovies;
           } else {
                 setSearchErrorMessage("Ничего не найдено");
+                console.log(searchErrorMessage)
           }
       } else {
         return;
