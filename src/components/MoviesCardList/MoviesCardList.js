@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 
 import MoviesCard from "../MoviesCard/MoviesCard.js";
 
-function MoviesCardList({moviesCards}) {
+function MoviesCardList({ moviesCards }) {
 
     const location = useLocation();
     const movies = location.pathname === '/movies';

@@ -5,7 +5,7 @@ import useFormWithValidation from "../../hooks/useFormWithValidation.js";
 
 function SearchForm({ handleSearch, searchQuery }) {
 
-    const { values, handleChange, setValues, isValid } = useFormWithValidation({ searchQuery: searchQuery });
+    const { values, handleChange, setValues, isValid } = useFormWithValidation({});
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmitSearch = (e) => {
@@ -17,6 +17,10 @@ function SearchForm({ handleSearch, searchQuery }) {
             setErrorMessage('');
             handleSearch(values.searchQuery);
       };
+
+      useEffect(() => {
+        setValues({ searchQuery: searchQuery });
+      }, [searchQuery, setValues]);
 
     return(
         <form className="search-form" onSubmit={handleSubmitSearch} noValidate>

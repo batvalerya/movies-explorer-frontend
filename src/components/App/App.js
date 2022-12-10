@@ -25,7 +25,6 @@ function App() {
   const [registerMessage, setRegisterMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const [isEditButtonActive, setEditButtonActive] = useState(false);
-  const [moviesCards, setMoviesCards] = useState([]);
 
 //функции
 
@@ -121,18 +120,6 @@ useEffect(() => {
   }
 }, [loggedIn]);
 
-// useEffect(() => {
-//   moviesApi.getMovies()
-//   .then((res) => {
-//     setMoviesCards(res);
-//     console.log(res)
-//   })
-//   .catch(() => {
-//       console.log('Ошибка');
-//   }
-//   )}, [loggedIn]
-// );
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -148,7 +135,6 @@ useEffect(() => {
             path="/movies"
             loggedIn={loggedIn}
             component={Movies}
-            moviesCards={moviesCards}
           />
 
           <ProtectedRoute

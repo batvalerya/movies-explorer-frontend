@@ -7,7 +7,7 @@ import Preloader from "../Preloader/Preloader.js";
 import SearchForm from "../SearchForm/SearchForm.js";
 import MoviesCardList from "../MoviesCardList/MoviesCardList.js";
 
-function Movies({ loggedIn, moviesCards }) {
+function Movies({ loggedIn }) {
 
     const [isLoading, setIsLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
@@ -21,6 +21,7 @@ function Movies({ loggedIn, moviesCards }) {
                 localStorage.setItem('movies', JSON.stringify(movies));
             })
             .catch((err) => {
+                setSearchErrorMessage("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз")
                 console.log(err)
             })
             .finally(() => {
@@ -36,11 +37,9 @@ function Movies({ loggedIn, moviesCards }) {
             if (filteredMovies.length !== 0) {
                 setSearchErrorMessage("");
                 setFoundMovies(filteredMovies);
-                console.log(filteredMovies)
             } else {
                 setSearchErrorMessage("Ничего не найдено");
                 setFoundMovies([]);
-                console.log("Ничего не найдено")
             }
     }
 

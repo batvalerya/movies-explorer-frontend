@@ -44,6 +44,10 @@ class MainApi {
         });
     };
 
+    getUserInfo() {
+      return this._request('/users/me');
+    }
+
     updateUserInfo({name, email}) {
       return fetch(`${this._baseUrl}/users/me`, {
         method: 'PATCH',
@@ -68,11 +72,38 @@ class MainApi {
         });
     }
 
-    getUserInfo() {
-        return this._request('/users/me');
+    saveMovie(movieData) {
+        return fetch(`${this._baseUrl}/movies`, {
+          method: "POST",
+          headers: this._headers,
+          credentials: "include",
+          body: JSON.stringify({
+            country: movieData.country,
+            director: movieData.director,
+            duration: movieData.duration,
+            year: movieData.year,
+            description: movieData.description,
+            image: `https://api.nomoreparties.co${movieData.image.url}`,
+            trailerLink: movieData.trailerLink,
+            thumbnail: `https://api.nomoreparties.co${movieData.image.formats.thumbnail.url}`,
+            movieId: movieData.id,
+            nameRU: movieData.nameRU,
+            nameEN: movieData.nameEN,
+          }),
+        })
+          .then((response) => {
+            return this._handleServerResponse(response);
+        });
     }
 
-
+    deleteMovie(movieId) {
+        return fetch(`${this._baseUrl}/movies/${movieId}`, {
+          method: 'DELETE',
+          headers: this._headers,
+          credentials: 'include',
+        })
+        .then(this._handleServerResponse)
+    }
 }
 
 export const mainApi = new MainApi({
