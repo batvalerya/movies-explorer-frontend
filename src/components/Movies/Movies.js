@@ -69,15 +69,20 @@ function Movies({ loggedIn, onSaveMovie, savedMovies }) {
 
       function checkIsCheckboxActive(filteredMovies) {
         if (isCheckboxActive) {
-          localStorage.setItem("isCheckboxActive", "true");
-          const shortMovies = filteredMovies.filter((movie) => {
+            localStorage.setItem("isCheckboxActive", "true");
+            const shortMovies = filteredMovies.filter((movie) => {
             return movie.duration <= 40;
           });
           localStorage.setItem(
             "shortMovies",
             JSON.stringify(shortMovies)
           );
-          return shortMovies;
+
+          if( shortMovies.length !== 0 ) {
+            return shortMovies;
+          } else {
+                setSearchErrorMessage("Ничего не найдено");
+          }
         } else {
           localStorage.setItem("isCheckboxActive", "false");
           return;

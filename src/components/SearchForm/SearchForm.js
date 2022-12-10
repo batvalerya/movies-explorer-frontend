@@ -22,9 +22,9 @@ function SearchForm({ handleSearch, searchQuery, toggleCheckbox, isCheckboxActiv
         setValues({ searchQuery: searchQuery });
       }, [searchQuery, setValues]);
 
-    //   useEffect(() => {
-    //     handleSearch(values.searchQuery);
-    //   }, [isCheckboxActive]);
+      useEffect(() => {
+        handleSearch(values.searchQuery);
+      }, [isCheckboxActive]);
 
     return(
         <form className="search-form" onSubmit={handleSubmitSearch} noValidate>
@@ -36,7 +36,7 @@ function SearchForm({ handleSearch, searchQuery, toggleCheckbox, isCheckboxActiv
                         placeholder="Фильм"
                         required
                         onChange={handleChange}
-                        value={values.searchQuery || ''}
+                        value={values.searchQuery || ""}
                     />
                     <button className="search-form__button" type="submit"></button>
                 </div>
