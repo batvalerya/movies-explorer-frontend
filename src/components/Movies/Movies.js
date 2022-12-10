@@ -7,7 +7,7 @@ import Preloader from "../Preloader/Preloader.js";
 import SearchForm from "../SearchForm/SearchForm.js";
 import MoviesCardList from "../MoviesCardList/MoviesCardList.js";
 
-function Movies({ loggedIn }) {
+function Movies({ loggedIn, onSaveMovie, savedMovies }) {
 
     const [isLoading, setIsLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
@@ -70,6 +70,8 @@ function Movies({ loggedIn }) {
                 {!searchErrorMessage && (
                     <MoviesCardList
                         moviesCards={foundMovies}
+                        onSaveMovie={onSaveMovie}
+                        savedMovies={savedMovies}
                     />
                 )}
                 {searchErrorMessage && <p className="movies__not-found">{searchErrorMessage}</p>}

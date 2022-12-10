@@ -42,7 +42,7 @@
     background: url(../../images/saveBtn.svg);
 }
 
-.movies-card__save-button:active {
+.movies-card__save-button_active {
     background: url(../../images/saveBtnActiv.svg);
 }
 

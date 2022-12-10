@@ -22,28 +22,58 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
+
   const [registerMessage, setRegisterMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
+
   const [isEditButtonActive, setEditButtonActive] = useState(false);
+
+  const [savedMovies, setSavedMovies] = useState([]);
+  const [saveMovieError, setSaveMovieError] = useState([]);
 
 //функции
 
-      function handleEditButtonClick() {
-        if(!isEditButtonActive) {
-            setEditButtonActive(true);
-            updateErrorMessage("");
-        } else {
-            setEditButtonActive(false);
-        }
-      }
+  function handleEditButtonClick() {
+    if(!isEditButtonActive) {
+        setEditButtonActive(true);
+        updateErrorMessage("");
+    } else {
+        setEditButtonActive(false);
+    }
+  }
 
-      function updateRegisterMessage(res) {
-        setRegisterMessage(res);
-      };
+  function updateRegisterMessage(res) {
+    setRegisterMessage(res);
+  };
 
-      function updateErrorMessage(res) {
-        setErrorMessage(res);
-      };
+  function updateErrorMessage(res) {
+    setErrorMessage(res);
+  };
+
+  function handleMovieSave(movieData) {
+    mainApi.saveMovie(movieData)
+      .then((movie) => {
+        setSavedMovies([...savedMovies, movie]);
+        console.log(movie)
+      })
+      .catch((err) => {
+        saveMovieError("При сохранении фильма произошла ошибка", err)
+      })
+  }
+
+  function handleMovieDelete(movieId) {
+    console.log(movieId)
+    mainApi.deleteMovie(movieId)
+      .then((res) => {
+        setSavedMovies((state) =>
+          state.filter((m) => m.id || m.movieId !== movieId)
+        );
+        console.log(res)
+      })
+      .catch((err) => {
+        setSaveMovieError("При удалении фильма произошла ошибка.", err)
+      })
+  }
 
   const onRegister = (data) => {
     return mainApi.register(data)
@@ -102,23 +132,36 @@ function App() {
       })
   }
 
-useEffect(() => {
-  const jwt = localStorage.getItem('jwt')
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt')
 
-  if(!jwt) {
-    return;
-  } else {
-    mainApi.getUserInfo()
-      .then((userInfo) => {
-        setCurrentUser(userInfo)
-        setLoggedIn(true);
-        history.push('/movies');
-    })
-    .catch((err) => {
-      console.log('При запросе данных о пользователе произошла ошибка', err)
-    })
-  }
-}, [loggedIn]);
+    if(!jwt) {
+      return;
+    } else {
+      mainApi.getUserInfo()
+        .then((userInfo) => {
+          setCurrentUser(userInfo)
+          setLoggedIn(true);
+          history.push('/movies');
+      })
+      .catch((err) => {
+        console.log('При запросе данных о пользователе произошла ошибка', err)
+      })
+    }
+  }, [loggedIn]);
+
+  useEffect(() => {
+    if (loggedIn) {
+      mainApi
+        .getSavedMovies()
+        .then((movies) => {
+          setSavedMovies(movies);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [loggedIn]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -135,12 +178,16 @@ useEffect(() => {
             path="/movies"
             loggedIn={loggedIn}
             component={Movies}
+            onSaveMovie={handleMovieSave}
+            savedMovies={savedMovies}
           />
 
           <ProtectedRoute
             path="/saved-movies"
             loggedIn={loggedIn}
             component={SavedMovies}
+            savedMovies={savedMovies}
+            onDeleteMovie={handleMovieDelete}
           />
 
           <ProtectedRoute
