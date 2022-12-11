@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory, Redirect } from 'react-router-dom';
 import { mainApi } from '../../utils/MainApi.js';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext.js';
@@ -30,7 +30,6 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
   const [saveMovieError, setSaveMovieError] = useState([]);
 
-  const [isCheckboxActive, setCheckboxOn] = useState(false);
 
 //функции
 
@@ -143,7 +142,6 @@ function App() {
         .then((userInfo) => {
           setCurrentUser(userInfo)
           setLoggedIn(true);
-          history.push('/movies');
       })
       .catch((err) => {
         console.log('При запросе данных о пользователе произошла ошибка', err)
@@ -170,7 +168,7 @@ function App() {
         <Switch>
 
           <Route exact path='/'>
-            <Main 
+            <Main
               loggedIn={loggedIn}
             />
           </Route>
@@ -181,6 +179,7 @@ function App() {
             component={Movies}
             onSaveMovie={handleMovieSave}
             savedMovies={savedMovies}
+            onDeleteMovie={handleMovieDelete}
           />
 
           <ProtectedRoute
@@ -202,19 +201,27 @@ function App() {
             handleEditButtonClick={handleEditButtonClick}
           />
 
-          <Route path="/signin">
-            <Login
-              onLogin={onLogin}
-              registerMessage={registerMessage}
-            />
+          <Route path='/signin'>
+            {loggedIn ? (
+              <Redirect to='./' />
+            ) : (
+              <Login
+                onLogin={onLogin}
+                registerMessage={registerMessage}
+              />
+            )}
           </Route>
 
-          <Route path="/signup">
-            <Register
-              onRegister={onRegister}
-              loggedIn={loggedIn}
-              registerMessage={registerMessage}
-            />
+          <Route path='/signup'>
+            {loggedIn ? (
+              <Redirect to='./' />
+            ) : (
+              <Register
+                onRegister={onRegister}
+                loggedIn={loggedIn}
+                registerMessage={registerMessage}
+              />
+            )}
           </Route>
 
           <Route path="*">

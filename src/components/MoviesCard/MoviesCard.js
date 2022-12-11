@@ -26,7 +26,7 @@ function MoviesCard({ movieCard, onSaveMovie, onDeleteMovie, savedMoviesCards })
         if (savedMovies) {
             onDeleteMovie(movieCard._id)
         } else {
-            onDeleteMovie(movieCard._id)
+            onDeleteMovie(movieCard.id)
         }
 
         setSaved(false)

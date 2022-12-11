@@ -8,7 +8,7 @@ import Preloader from "../Preloader/Preloader.js";
 import SearchForm from "../SearchForm/SearchForm.js";
 import MoviesCardList from "../MoviesCardList/MoviesCardList.js";
 
-function Movies({ loggedIn, onSaveMovie, savedMovies }) {
+function Movies({ loggedIn, onSaveMovie, savedMovies, onDeleteMovie }) {
 
     const location = useLocation();
     const moviesPage = location.pathname === '/movies';
@@ -125,6 +125,7 @@ function Movies({ loggedIn, onSaveMovie, savedMovies }) {
                         moviesCards={foundMovies}
                         onSaveMovie={onSaveMovie}
                         savedMovies={savedMovies}
+                        onDeleteMovie={onDeleteMovie}
                     />
                 )}
                 {searchErrorMessage && <p className="movies__not-found">{searchErrorMessage}</p>}
