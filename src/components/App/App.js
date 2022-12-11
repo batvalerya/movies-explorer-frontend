@@ -30,6 +30,8 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
   const [saveMovieError, setSaveMovieError] = useState([]);
 
+  const [isCheckboxActive, setCheckboxOn] = useState(false);
+
 //функции
 
   function handleEditButtonClick() {

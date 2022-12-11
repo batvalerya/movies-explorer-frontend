@@ -16,18 +16,18 @@ function MoviesCardList({ moviesCards, onSaveMovie, onDeleteMovie, savedMovies }
     useEffect(() => {
         if (moviesPage) {
           switch (true) {
-            case size.width <= 690:
-              setPaginator({ step: 5, start: 5 });;
+            case size.width <= 460:
+              setPaginator({ step: 1, start: 5 });;
               break;
-            case size.width <= 1087:
+            case size.width <= 1280:
               setPaginator({ step: 7, start: 7 });
               break;
             default:
-              setPaginator({ step: 7, start: 5 });
+              setPaginator({ step: 7, start: 7 });
               break;
           }
         }
-      }, [moviesPage]);
+      }, [size.width, moviesPage]);
     
       const handleMoreButtonClick = () => {
         setPaginator((prev) => ({
