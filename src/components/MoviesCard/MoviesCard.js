@@ -32,6 +32,12 @@ function MoviesCard({ movieCard, onSaveMovie, onDeleteMovie, savedMoviesCards })
         setSaved(false)
     }
 
+    const changeTimeFormat = (duration) => {
+        const hours = Math.floor(duration / 60);
+        const minutes = duration % 60;
+        return `${hours > 0 ? `${hours}ч` : ''} ${minutes}м`;
+      };
+
     useEffect(() => {
         setSaved(
           pathname === "/movies"
@@ -47,7 +53,7 @@ function MoviesCard({ movieCard, onSaveMovie, onDeleteMovie, savedMoviesCards })
             <div className="movies-card__container">
                 <div className="movies-card__info">
                     <h3 className="movies-card__title">{movieCard.nameRU}</h3>
-                    <p className="movies-card__duration">{movieCard.duration}</p>
+                    <p className="movies-card__duration">{changeTimeFormat(movieCard.duration)}</p>
                 </div>
 
                 { !savedMovies ? (
@@ -64,8 +70,9 @@ function MoviesCard({ movieCard, onSaveMovie, onDeleteMovie, savedMoviesCards })
                     />
                     )}
             </div>
-            <img className="movies-card__img" alt={movieCard.nameRU} src={ savedMovies ? movieCard.image : `https://api.nomoreparties.co${movieCard.image.url}`}
-            />
+            <a href={movieCard.trailerLink} target='_blank' rel='noreferrer' className="movies-card__trailer-link">
+                <img className="movies-card__img" alt={movieCard.nameRU} src={ savedMovies ? movieCard.image : `https://api.nomoreparties.co${movieCard.image.url}`}/>
+            </a>
         </li>
     )
 }
