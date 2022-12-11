@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import accountImg from '../../images/accountImg.svg'
 import Hamburger from '../Hamburger/Hamburger';
 
@@ -23,14 +23,14 @@ function Navigation({ isAuthorize, onHamburgerIcon, isOpen, onHamburgerCloseBtn 
             <div className="account-menu account-menu_hidden">
                 <ul className="nav">
                     <li  className="nav__item">
-                        <Link to="/movies" className="nav__link nav__link_movies">
+                        <NavLink to="/movies" className="nav__link nav__link_movies" activeClassName="nav__link-movies_active">
                             Фильмы
-                        </Link>
+                        </NavLink>
                     </li>
                     <li className="nav__item">
-                        <Link to="/saved-movies" className="nav__link nav__link_saved-movies">
+                        <NavLink to="/saved-movies" className="nav__link nav__link_saved-movies" activeClassName="nav__link-movies_active">
                             Сохранённые фильмы
-                        </Link>
+                        </NavLink>
                     </li>
                 </ul>
                 <div className="account-menu__item">

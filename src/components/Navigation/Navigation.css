@@ -24,6 +24,11 @@
     font-style: normal;
 }
 
+.nav__link-movies_active {
+    padding-bottom: 4px;
+    border-bottom: 2px solid #FFFFFF;
+}
+
 .nav__link_signin {
     color: #000;
     padding: 8px 20px;
