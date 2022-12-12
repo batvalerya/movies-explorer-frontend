@@ -1,6 +1,6 @@
 import AuthForm from "../AuthForm/AuthForm.js"
 
-function Register({ onRegister, loggedIn, registerMessage }) {
+function Register({ onRegister, loggedIn, registerMessage, isLoading }) {
 
     function handleChangeSubmit (registerData) {
         onRegister(registerData);
@@ -17,6 +17,7 @@ function Register({ onRegister, loggedIn, registerMessage }) {
             questionLink={"/signin"}
             questionLinkText={"Войти"}
             errorRegisterMessage={registerMessage}
+            isLoading={isLoading}
         />
     )
 };

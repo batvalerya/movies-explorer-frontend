@@ -32,6 +32,8 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
   const [saveMovieError, setSaveMovieError] = useState([]);
 
+  const [isLoading, setIsLoading] = useState(false);
+
 
 //функции
 
@@ -77,13 +79,16 @@ function App() {
   }
 
   const onRegister = (data) => {
+    setIsLoading(true)
     return mainApi.register(data)
       .then(() => {
         onLogin(data)
         updateRegisterMessage(true);
         history.push('/movies');
+        setIsLoading(false)
     })
       .catch((err) => {
+        setIsLoading(false)
         updateRegisterMessage(false);
         if (err.includes("409")) {
           updateRegisterMessage("Пользователь с таким email уже существует.");
@@ -118,14 +123,17 @@ function App() {
   };
 
   const onEditProfileInfo = (profileInfo) => {
+    setIsLoading(true)
     return mainApi.updateUserInfo(profileInfo)
       .then((userInfo) => {
         setCurrentUser(userInfo);
         setTimeout(() => handleEditButtonClick(), 1000);
         updateErrorMessage("Данные успешно обновлены");
+        setIsLoading(false)
       })
       .catch((err) => {
         updateErrorMessage(false);
+        setIsLoading(false)
         if (err.includes("409")) {
           updateErrorMessage("Пользователь с таким email уже существует.");
         } else {
@@ -205,6 +213,7 @@ function App() {
             errorMessage={errorMessage}
             isEditButtonActive={isEditButtonActive}
             handleEditButtonClick={handleEditButtonClick}
+            isLoading={isLoading}
           />
 
           <Route path='/signin'>
@@ -214,6 +223,7 @@ function App() {
               <Login
                 onLogin={onLogin}
                 registerMessage={registerMessage}
+                isLoading={isLoading}
               />
             )}
           </Route>
@@ -226,6 +236,7 @@ function App() {
                 onRegister={onRegister}
                 loggedIn={loggedIn}
                 registerMessage={registerMessage}
+                isLoading={isLoading}
               />
             )}
           </Route>

@@ -11,19 +11,20 @@ function AuthForm({
     formQuestion,
     questionLink,
     questionLinkText,
-    errorRegisterMessage}) {
+    errorRegisterMessage,
+    isLoading}) {
 
     const { values, handleChange, errors, isValid } = useFormWithValidation({
         name: '',
         email: '',
         password: '',
-      });
+    });
 
-      function onSubmit(e) {
-        handleChangeSubmit(values);
-        e.preventDefault();
-      }
-      
+    function onSubmit(e) {
+    handleChangeSubmit(values);
+    e.preventDefault();
+    }
+
     
     return(
         <section className="auth">
@@ -63,6 +64,7 @@ function AuthForm({
                             pattern='[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}'
                             onChange={handleChange}
                             required
+                            disabled={isLoading}
                         />
                         <span className={`auth__error ${errors.email && 'auth__error_visible'}`}>
                             {errors.email}
@@ -80,6 +82,7 @@ function AuthForm({
                             onChange={handleChange}
                             required
                             autoComplete="on"
+                            disabled={isLoading}
                         />
                         <span className={`auth__error ${errors.password && 'auth__error_visible'}`}>
                             {errors.password}
@@ -90,7 +93,7 @@ function AuthForm({
                         {errorRegisterMessage}
                     </span>
 
-                    <button className={`auth-btn ${ !isValid ? 'auth-btn_disabled' : 'auth-btn_active'}`} type="submit" disabled={!isValid}>
+                    <button className={`auth-btn ${ !isValid || isLoading ? 'auth-btn_disabled' : 'auth-btn_active'}`} type="submit" disabled={!isValid || isLoading}>
                         {submitText}
                     </button>
                     

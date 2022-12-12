@@ -6,7 +6,7 @@ import Header from '../Header/Header';
 import useFormWithValidation from '../../hooks/useFormWithValidation.js';
 
 
-function Profile({ onLogout, loggedIn, onEditProfileInfo, errorMessage, isEditButtonActive, handleEditButtonClick }) {
+function Profile({ onLogout, loggedIn, onEditProfileInfo, errorMessage, isEditButtonActive, handleEditButtonClick, isLoading }) {
 
     const { values, handleChange, errors, isValid, setValues, setValid } = useFormWithValidation({
         name: "",
@@ -52,7 +52,7 @@ function Profile({ onLogout, loggedIn, onEditProfileInfo, errorMessage, isEditBu
                                 type="text"
                                 name="name"
                                 value={values.name}
-                                disabled={!isEditButtonActive && "disabled"}
+                                disabled={isLoading || !isEditButtonActive}
                                 onChange={handleChange}
                                 pattern='[a-zA-Zа-яА-ЯёË\s\-]+'
                                 minLength='2'
@@ -72,7 +72,7 @@ function Profile({ onLogout, loggedIn, onEditProfileInfo, errorMessage, isEditBu
                                 type="email"
                                 name="email"
                                 value={values.email}
-                                disabled={!isEditButtonActive && "disabled"}
+                                disabled={isLoading || !isEditButtonActive}
                                 onChange={handleChange}
                                 pattern='[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}'
                                 required
@@ -86,7 +86,7 @@ function Profile({ onLogout, loggedIn, onEditProfileInfo, errorMessage, isEditBu
                         {isEditButtonActive ? (
                             <>
                              <span className='profile__message'>{errorMessage}</span>
-                             <button type='submit' className={`profile__save-btn ${ !isValid ? 'profile__save-btn_disabled' : 'profile__save-btn_active'}`} disabled={!isValid}>
+                             <button type='submit' className={`profile__save-btn ${ !isValid || isLoading ? 'profile__save-btn_disabled' : 'profile__save-btn_active'}`} disabled={!isValid || isLoading}>
                                 Сохранить
                              </button>
                             </>
