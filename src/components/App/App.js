@@ -72,7 +72,12 @@ function App() {
         console.log(res)
       })
       .catch((err) => {
-        setSaveMovieError("При удалении фильма произошла ошибка.", err)
+        if (err.includes("401")) {
+          onLogout();
+          history.push('/');
+        } else {
+          setSaveMovieError("При удалении фильма произошла ошибка.", err);
+        }
       })
   }
 
