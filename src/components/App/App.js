@@ -19,6 +19,7 @@ function App() {
   const { pathname } = useLocation();
 
   const history = useHistory();
+  const location = useLocation();
 
 
   const [currentUser, setCurrentUser] = useState({});
@@ -167,6 +168,7 @@ function App() {
         .then((userInfo) => {
           setCurrentUser(userInfo)
           setLoggedIn(true);
+          history.replace(location);
       })
       .catch((err) => {
         console.log('При запросе данных о пользователе произошла ошибка', err)
