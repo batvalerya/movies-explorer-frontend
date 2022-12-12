@@ -44,6 +44,17 @@ class MainApi {
         });
     };
 
+    logout() {
+      return fetch(`${this._baseUrl}/signout`, {
+        method: "GET",
+        headers: this._headers,
+        credentials: "include",
+      })
+        .then((response) => {
+            return this._handleServerResponse(response);
+         });
+    }
+
     getUserInfo() {
       return this._request('/users/me');
     }

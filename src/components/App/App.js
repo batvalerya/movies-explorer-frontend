@@ -34,7 +34,6 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-
 //функции
 
   function handleEditButtonClick() {
@@ -58,7 +57,6 @@ function App() {
     mainApi.saveMovie(movieData)
       .then((movie) => {
         setSavedMovies([...savedMovies, movie]);
-        console.log(movie)
       })
       .catch((err) => {
         saveMovieError("При сохранении фильма произошла ошибка", err)
@@ -85,7 +83,8 @@ function App() {
         onLogin(data)
         updateRegisterMessage(true);
         history.push('/movies');
-        setIsLoading(false)
+        setIsLoading(false);
+        localStorage.setItem("loggedIn", true);
     })
       .catch((err) => {
         setIsLoading(false)
@@ -100,8 +99,8 @@ function App() {
 
   const onLogin = (data) => {
     return mainApi.authorize(data)
-      .then(({token: jwt}) => {
-        localStorage.setItem('jwt', jwt);
+      .then(() => {
+        localStorage.setItem("loggedIn", true);
         setLoggedIn(true);
         history.push('/movies');
     })
@@ -115,12 +114,18 @@ function App() {
       })
   };
 
-  const onLogout = () => {
-    setLoggedIn(false);
-    localStorage.removeItem('jwt');
-    history.push('/');
-    localStorage.clear();
-  };
+  function onLogout() {
+    mainApi
+      .logout()
+      .then((res) => {
+        setLoggedIn(false);
+        history.push('/');
+        localStorage.clear();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   const onEditProfileInfo = (profileInfo) => {
     setIsLoading(true)
@@ -143,9 +148,9 @@ function App() {
   }
 
   useEffect(() => {
-    const jwt = localStorage.getItem('jwt')
+    const token = localStorage.getItem("loggedIn");
 
-    if(!jwt) {
+    if(!token) {
       return;
     } else {
       mainApi.getUserInfo()
