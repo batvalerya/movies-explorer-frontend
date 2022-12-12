@@ -6,15 +6,16 @@ import SearchForm from "../SearchForm/SearchForm.js";
 import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer.js";
 
-function SavedMovies({ loggedIn, savedMovies, onDeleteMovie }) {
+function SavedMovies({ loggedIn, savedMovies, onDeleteMovie, isCheckboxActive, toggleCheckbox }) {
 
     const { pathname } = useLocation();
     const [foundSavedMovies, setFoundSavedMovies] = useState([]);
-    const [isCheckboxActive, setCheckboxOn] = useState(false);
     const [searchErrorMessage, setSearchErrorMessage] = useState("");
+    const [searchQuery, setSearchQuery] = useState("");
 
     function handleSearch(value) {
       if (value) {
+        setSearchQuery(value);
         moviesFilter(value)
         isCheckboxActive
           ? setFoundSavedMovies(
@@ -67,15 +68,10 @@ function SavedMovies({ loggedIn, savedMovies, onDeleteMovie }) {
         return;
       }
     }
-  
-    function toggleCheckbox() {
-      setCheckboxOn(!isCheckboxActive);
-    }
 
     useEffect(() => {
         setFoundSavedMovies(savedMovies);
       }, [pathname, savedMovies]);
-
 
     return(
         <>

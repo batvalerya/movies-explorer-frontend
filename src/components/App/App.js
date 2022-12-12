@@ -35,6 +35,8 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const [isCheckboxActive, setCheckboxActive] = useState(false);
+
 //функции
 
   function handleEditButtonClick() {
@@ -53,6 +55,18 @@ function App() {
   function updateErrorMessage(res) {
     setErrorMessage(res);
   };
+
+  function toggleCheckbox() {
+    setCheckboxActive(!isCheckboxActive);
+  }
+
+  function checkboxOn() {
+    setCheckboxActive(true);
+  }
+
+  function checkboxOff() {
+    setCheckboxActive(false);
+  }
 
   function handleMovieSave(movieData) {
     mainApi.saveMovie(movieData)
@@ -136,6 +150,7 @@ function App() {
         setLoggedIn(false);
         history.push('/');
         localStorage.clear();
+        setCheckboxActive(false);
       })
       .catch((err) => {
         console.log(err);
@@ -220,6 +235,10 @@ function App() {
             onSaveMovie={handleMovieSave}
             savedMovies={savedMovies}
             onDeleteMovie={handleMovieDelete}
+            isCheckboxActive={isCheckboxActive}
+            toggleCheckbox={toggleCheckbox}
+            checkboxOn={checkboxOn}
+            checkboxOff={checkboxOff}
           />
 
           <ProtectedRoute
@@ -228,6 +247,8 @@ function App() {
             component={SavedMovies}
             savedMovies={savedMovies}
             onDeleteMovie={handleMovieDelete}
+            toggleCheckbox={toggleCheckbox}
+            isCheckboxActive={isCheckboxActive}
           />
 
           <ProtectedRoute

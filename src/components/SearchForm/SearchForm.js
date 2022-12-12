@@ -23,7 +23,9 @@ function SearchForm({ handleSearch, searchQuery, toggleCheckbox, isCheckboxActiv
       }, [searchQuery, setValues]);
 
       useEffect(() => {
-        handleSearch(values.searchQuery);
+        if(isCheckboxActive) {
+            handleSearch(values.searchQuery);
+        }
       }, [isCheckboxActive]);
 
     return(

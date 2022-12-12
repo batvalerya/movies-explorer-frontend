@@ -8,7 +8,7 @@ import Preloader from "../Preloader/Preloader.js";
 import SearchForm from "../SearchForm/SearchForm.js";
 import MoviesCardList from "../MoviesCardList/MoviesCardList.js";
 
-function Movies({ loggedIn, onSaveMovie, savedMovies, onDeleteMovie }) {
+function Movies({ loggedIn, onSaveMovie, savedMovies, onDeleteMovie, isCheckboxActive, toggleCheckbox, checkboxOn, checkboxOff }) {
 
     const location = useLocation();
     const moviesPage = location.pathname === '/movies';
@@ -17,23 +17,6 @@ function Movies({ loggedIn, onSaveMovie, savedMovies, onDeleteMovie }) {
     const [searchQuery, setSearchQuery] = useState("");
     const [foundMovies, setFoundMovies] = useState([]);
     const [searchErrorMessage, setSearchErrorMessage] = useState("");
-
-    const [isCheckboxActive, setCheckboxActive] = useState(false);
-
-    function getMovies() {
-        setIsLoading(true);
-        moviesApi.getMovies()
-            .then((movies) => {
-                localStorage.setItem('movies', JSON.stringify(movies));
-            })
-            .catch((err) => {
-                setSearchErrorMessage("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз")
-                console.log(err)
-            })
-            .finally(() => {
-                setIsLoading(false);
-            });
-    }
 
     function moviesFilter(value, allMovies) {
             const filteredMovies = allMovies.filter((movie) =>
@@ -47,19 +30,34 @@ function Movies({ loggedIn, onSaveMovie, savedMovies, onDeleteMovie }) {
                 setSearchErrorMessage("Ничего не найдено");
                 setFoundMovies([]);
             }
-
             checkIsCheckboxActive(filteredMovies)
     }
 
     function handleSearch(value) {
         const allMovies = JSON.parse(localStorage.getItem("movies"));
         if (!allMovies) {
-          getMovies();
-        }
-        if (value) {
-            setSearchQuery(value);
-            localStorage.setItem("searchQuery", value);
-            moviesFilter(value, allMovies);
+              setIsLoading(true);
+              moviesApi.getMovies()
+                .then((movies) => {
+                    localStorage.setItem('movies', JSON.stringify(movies));
+                    setSearchQuery(value);
+                    localStorage.setItem("searchQuery", value);
+                    console.log(localStorage.getItem("searchQuery"))
+                    moviesFilter(value, movies);
+                })
+                .catch((err) => {
+                    setSearchErrorMessage("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз")
+                    console.log(err)
+                })
+                .finally(() => {
+                    setIsLoading(false);
+                });
+            } else {
+              if (value) {
+                setSearchQuery(value);
+                localStorage.setItem("searchQuery", value);
+                moviesFilter(value, allMovies);
+              }
         }
 
         isCheckboxActive
@@ -89,20 +87,16 @@ function Movies({ loggedIn, onSaveMovie, savedMovies, onDeleteMovie }) {
         }
       }
 
-      function toggleCheckbox() {
-        setCheckboxActive(!isCheckboxActive);
-      }
-
       useEffect(() => {
         if (localStorage.getItem("searchQuery")) {
             setSearchQuery(localStorage.getItem("searchQuery"));
         }
         if (localStorage.getItem("isCheckboxActive") === "true") {
-            setCheckboxActive(true);
+            checkboxOn();
             setFoundMovies(JSON.parse(localStorage.getItem("shortMovies")));
         }
         if (localStorage.getItem("isCheckboxActive") === "false") {
-            setCheckboxActive(false);
+            checkboxOff();
             setFoundMovies(JSON.parse(localStorage.getItem("foundMovies")));
         }
       }, [moviesPage]);
@@ -112,7 +106,6 @@ function Movies({ loggedIn, onSaveMovie, savedMovies, onDeleteMovie }) {
             <Header loggedIn={ loggedIn} />
             <section className="movies">
                 <SearchForm
-                    getMovies={getMovies}
                     handleSearch={handleSearch}
                     searchQuery={searchQuery}
                     toggleCheckbox={toggleCheckbox}
