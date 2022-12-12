@@ -26,7 +26,11 @@ function MoviesCard({ movieCard, onSaveMovie, onDeleteMovie, savedMoviesCards })
         if (savedMovies) {
             onDeleteMovie(movieCard._id)
         } else {
-            onDeleteMovie(movieCard.id)
+            savedMoviesCards.map((savedMoviesCard) => {
+              if (savedMoviesCard.movieId === movieCard.id) {
+                onDeleteMovie(savedMoviesCard._id)
+              }
+            })
         }
 
         setSaved(false)
