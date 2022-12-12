@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Route, Switch, useHistory, Redirect } from 'react-router-dom';
+import { Route, Switch, useHistory, Redirect, useLocation } from 'react-router-dom';
 import { mainApi } from '../../utils/MainApi.js';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext.js';
@@ -15,6 +15,8 @@ import NotFound from '../NotFound/NotFound.js';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.js';
 
 function App() {
+
+  const { pathname } = useLocation();
 
   const history = useHistory();
 
@@ -161,6 +163,10 @@ function App() {
         });
     }
   }, [loggedIn]);
+
+  useEffect(() => {
+    setRegisterMessage('')
+  }, [pathname])
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

@@ -23,6 +23,7 @@ function AuthForm({
         handleChangeSubmit(values);
         e.preventDefault();
       }
+      
     
     return(
         <section className="auth">
