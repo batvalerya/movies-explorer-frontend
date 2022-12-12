@@ -62,7 +62,9 @@ function App() {
       .catch((err) => {
         if (err.includes("401")) {
           onLogout();
+          setLoggedIn(false);
           history.push('/');
+          localStorage.clear();
         } else {
           setSaveMovieError("При удалении фильма произошла ошибка.", err);
         }
@@ -80,7 +82,9 @@ function App() {
       .catch((err) => {
         if (err.includes("401")) {
           onLogout();
+          setLoggedIn(false);
           history.push('/');
+          localStorage.clear();
         } else {
           setSaveMovieError("При удалении фильма произошла ошибка.", err);
         }
@@ -152,6 +156,11 @@ function App() {
         setIsLoading(false)
         if (err.includes("409")) {
           updateErrorMessage("Пользователь с таким email уже существует.");
+        } else if (err.includes("401")) {
+            onLogout();
+            setLoggedIn(false);
+            history.push('/');
+            localStorage.clear();
         } else {
           updateErrorMessage("При обновлении профиля произошла ошибка.");
         }
