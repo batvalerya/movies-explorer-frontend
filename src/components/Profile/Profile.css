@@ -152,6 +152,10 @@
     .profile__edit-btn {
         padding-top: 210px;
     }
+
+    .profile__save-btn {
+       margin-top: 210px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -173,6 +177,10 @@
         line-height: 15px;
         color: #FFFFFF;
         padding-top: 363px;
+    }
+
+    .profile__save-btn {
+        margin-top: 363px;
     }
 
     .profile__logout-btn {
